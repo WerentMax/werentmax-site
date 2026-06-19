@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WeRenTMax — L'estimateur locatif des pros</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy:   #0a0f1e;
+    --navy2:  #111827;
+    --blue:   #2563eb;
+    --blue2:  #1d4ed8;
+    --cyan:   #06b6d4;
+    --white:  #f8fafc;
+    --muted:  #94a3b8;
+    --border: rgba(255,255,255,0.08);
+    --card:   rgba(255,255,255,0.04);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 60px;
+    background: rgba(10,15,30,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none;
+  }
+
+  .logo-w {
+    width: 36px; height: 36px;
+  }
+
+  .logo-name {
+    font-family: 'Syne', sans-serif;
+    font-size: 18px; font-weight: 800;
+    color: var(--white);
+    letter-spacing: 1px;
+  }
+
+  .logo-name span { color: var(--cyan); }
+
+  nav ul {
+    display: flex; gap: 36px; list-style: none;
+  }
+
+  nav ul a {
+    color: var(--muted); text-decoration: none;
+    font-size: 14px; font-weight: 500;
+    transition: color .2s;
+  }
+
+  nav ul a:hover { color: var(--white); }
+
+  .btn-nav {
+    background: var(--blue);
+    color: #fff; border: none; border-radius: 8px;
+    padding: 10px 22px; font-size: 14px; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    transition: background .2s;
+  }
+  .btn-nav:hover { background: var(--blue2); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 120px 40px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
+    width: 700px; height: 700px;
+    background: radial-gradient(ellipse, rgba(37,99,235,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(37,99,235,0.15);
+    border: 1px solid rgba(37,99,235,0.3);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 12px; font-weight: 500;
+    color: #93c5fd;
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--cyan);
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .hero h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(42px, 7vw, 78px);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    max-width: 900px;
+    margin-bottom: 28px;
+  }
+
+  .hero h1 em {
+    font-style: normal;
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 18px; color: var(--muted);
+    max-width: 580px; line-height: 1.7;
+    margin-bottom: 48px;
+  }
+
+  .hero-cta {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 80px;
+  }
+
+  .btn-primary {
+    background: var(--blue);
+    color: #fff; border: none; border-radius: 10px;
+    padding: 16px 32px; font-size: 15px; font-weight: 600;
+    cursor: pointer; text-decoration: none;
+    transition: all .2s;
+    box-shadow: 0 0 30px rgba(37,99,235,0.35);
+  }
+  .btn-primary:hover {
+    background: var(--blue2);
+    transform: translateY(-1px);
+    box-shadow: 0 0 40px rgba(37,99,235,0.5);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--white); border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 32px; font-size: 15px; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    transition: all .2s;
+  }
+  .btn-ghost:hover {
+    border-color: rgba(255,255,255,0.25);
+    background: var(--card);
+  }
+
+  /* ── STATS HERO ── */
+  .hero-stats {
+    display: flex; gap: 60px; justify-content: center;
+    border-top: 1px solid var(--border);
+    padding-top: 40px;
+    flex-wrap: wrap;
+  }
+
+  .hero-stat { text-align: center; }
+
+  .hero-stat strong {
+    display: block;
+    font-family: 'Syne', sans-serif;
+    font-size: 36px; font-weight: 800;
+    background: linear-gradient(135deg, #fff, var(--cyan));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-stat span {
+    font-size: 13px; color: var(--muted); letter-spacing: 0.5px;
+  }
+
+  /* ── PREVIEW CARD ── */
+  .preview {
+    padding: 0 40px 120px;
+    display: flex; justify-content: center;
+  }
+
+  .preview-card {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 32px;
+    max-width: 880px; width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .preview-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+  }
+
+  .preview-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 28px;
+  }
+
+  .preview-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 14px; font-weight: 700;
+    color: var(--muted); letter-spacing: 2px; text-transform: uppercase;
+  }
+
+  .preview-badge {
+    background: rgba(6,182,212,0.15);
+    border: 1px solid rgba(6,182,212,0.3);
+    color: var(--cyan);
+    font-size: 11px; font-weight: 500;
+    padding: 4px 12px; border-radius: 100px;
+    letter-spacing: 1px;
+  }
+
+  .preview-scenarios {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .scenario {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .scenario.highlight {
+    border-color: rgba(37,99,235,0.4);
+    background: rgba(37,99,235,0.08);
+  }
+
+  .scenario-label {
+    font-size: 10px; color: var(--muted);
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .scenario-value {
+    font-family: 'Syne', sans-serif;
+    font-size: 28px; font-weight: 800;
+    margin-bottom: 4px;
+  }
+
+  .scenario.highlight .scenario-value { color: #60a5fa; }
+
+  .scenario-sub { font-size: 11px; color: var(--muted); }
+
+  .preview-bar {
+    display: flex; gap: 4px; align-items: flex-end; height: 60px;
+  }
+
+  .bar {
+    flex: 1; border-radius: 3px 3px 0 0;
+    background: rgba(37,99,235,0.3);
+    transition: all .3s;
+  }
+
+  .bar:hover { background: var(--blue); }
+
+  .bar.peak { background: rgba(6,182,212,0.5); }
+  .bar.peak:hover { background: var(--cyan); }
+
+  /* ── SECTION ── */
+  section { padding: 100px 40px; }
+
+  .section-label {
+    font-size: 11px; font-weight: 600;
+    color: var(--cyan); letter-spacing: 3px;
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 800; line-height: 1.1;
+    letter-spacing: -1px;
+    max-width: 600px;
+    margin-bottom: 20px;
+  }
+
+  .section-sub {
+    font-size: 16px; color: var(--muted);
+    max-width: 520px; line-height: 1.7;
+    margin-bottom: 60px;
+  }
+
+  /* ── FEATURES ── */
+  .features { background: var(--navy2); }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    background: var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .feature {
+    background: var(--navy2);
+    padding: 40px 36px;
+    position: relative;
+    transition: background .2s;
+  }
+
+  .feature:hover { background: rgba(255,255,255,0.03); }
+
+  .feature-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: rgba(37,99,235,0.15);
+    border: 1px solid rgba(37,99,235,0.25);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+  .feature h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 17px; font-weight: 700;
+    margin-bottom: 10px; line-height: 1.3;
+  }
+
+  .feature p {
+    font-size: 14px; color: var(--muted); line-height: 1.7;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .steps {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px;
+  }
+
+  .step { position: relative; }
+
+  .step-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 48px; font-weight: 800;
+    color: rgba(37,99,235,0.2);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+
+  .step h3 {
+    font-size: 16px; font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+  /* ── BRANDING ── */
+  .branding-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+    align-items: center;
+  }
+
+  .branding-visual {
+    background: var(--navy2);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 32px;
+    position: relative; overflow: hidden;
+  }
+
+  .branding-visual::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, var(--cyan), var(--blue));
+  }
+
+  .brand-demo {
+    display: flex; flex-direction: column; gap: 12px;
+  }
+
+  .brand-bar {
+    height: 8px; border-radius: 4px;
+    background: linear-gradient(90deg, var(--blue), var(--cyan));
+  }
+
+  .brand-bar.alt {
+    background: linear-gradient(90deg, #7c3aed, #db2777);
+    width: 75%;
+  }
+
+  .brand-bar.alt2 {
+    background: linear-gradient(90deg, #059669, #10b981);
+    width: 60%;
+  }
+
+  .brand-label {
+    font-size: 12px; color: var(--muted); margin-top: 8px;
+  }
+
+  /* ── PRICING ── */
+  .pricing { background: var(--navy2); }
+
+  .pricing-toggle {
+    display: flex; align-items: center; gap: 14px;
+    margin-bottom: 56px;
+  }
+
+  .toggle-label { font-size: 14px; color: var(--muted); }
+  .toggle-label.active { color: var(--white); font-weight: 500; }
+
+  .toggle {
+    width: 48px; height: 26px;
+    background: var(--blue);
+    border-radius: 100px;
+    position: relative; cursor: pointer;
+    border: none;
+  }
+
+  .toggle::after {
+    content: '';
+    position: absolute; top: 3px; left: 3px;
+    width: 20px; height: 20px;
+    background: #fff; border-radius: 50%;
+    transition: transform .2s;
+  }
+
+  .badge-save {
+    background: rgba(6,182,212,0.15);
+    border: 1px solid rgba(6,182,212,0.3);
+    color: var(--cyan);
+    font-size: 11px; font-weight: 600;
+    padding: 3px 10px; border-radius: 100px;
+  }
+
+  .pricing-cards {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 24px; max-width: 780px;
+  }
+
+  .pricing-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+  }
+
+  .pricing-card.popular {
+    border-color: rgba(37,99,235,0.5);
+    background: rgba(37,99,235,0.06);
+  }
+
+  .popular-tag {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--blue);
+    color: #fff; font-size: 11px; font-weight: 600;
+    padding: 4px 16px; border-radius: 100px;
+    white-space: nowrap; letter-spacing: 1px;
+  }
+
+  .plan-name {
+    font-size: 13px; color: var(--muted);
+    letter-spacing: 2px; text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .plan-price {
+    font-family: 'Syne', sans-serif;
+    font-size: 52px; font-weight: 800;
+    line-height: 1; margin-bottom: 6px;
+  }
+
+  .plan-price sup { font-size: 22px; vertical-align: top; margin-top: 8px; }
+  .plan-price sub { font-size: 16px; color: var(--muted); }
+
+  .plan-desc {
+    font-size: 13px; color: var(--muted);
+    margin-bottom: 32px;
+  }
+
+  .plan-features {
+    list-style: none; display: flex; flex-direction: column; gap: 12px;
+    margin-bottom: 36px;
+  }
+
+  .plan-features li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 14px; color: var(--muted);
+  }
+
+  .plan-features li::before {
+    content: '✓';
+    color: var(--cyan); font-weight: 700;
+    flex-shrink: 0; margin-top: 1px;
+  }
+
+  .btn-plan {
+    display: block; text-align: center;
+    padding: 14px; border-radius: 10px;
+    font-size: 14px; font-weight: 600;
+    text-decoration: none; cursor: pointer;
+    border: none; transition: all .2s;
+  }
+
+  .btn-plan-primary {
+    background: var(--blue); color: #fff;
+  }
+  .btn-plan-primary:hover { background: var(--blue2); }
+
+  .btn-plan-ghost {
+    background: transparent; color: var(--white);
+    border: 1px solid var(--border);
+  }
+  .btn-plan-ghost:hover { border-color: rgba(255,255,255,0.25); }
+
+  /* ── CTA FINAL ── */
+  .cta-final {
+    text-align: center; padding: 120px 40px;
+    position: relative; overflow: hidden;
+  }
+
+  .cta-final::before {
+    content: '';
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse, rgba(6,182,212,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .cta-final h2 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 800; line-height: 1.1;
+    letter-spacing: -1.5px;
+    max-width: 700px; margin: 0 auto 24px;
+  }
+
+  .cta-final p {
+    font-size: 17px; color: var(--muted);
+    margin-bottom: 48px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 40px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+
+  footer p { font-size: 13px; color: var(--muted); }
+
+  footer nav ul {
+    display: flex; gap: 28px;
+  }
+
+  footer nav a {
+    font-size: 13px; color: var(--muted);
+    text-decoration: none;
+  }
+
+  footer nav a:hover { color: var(--white); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    nav ul { display: none; }
+    .hero { padding: 100px 24px 60px; }
+    .preview { padding: 0 24px 80px; }
+    section { padding: 70px 24px; }
+    .preview-scenarios { grid-template-columns: 1fr; }
+    .features-grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .branding-row { grid-template-columns: 1fr; }
+    .pricing-cards { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 20px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <a href="#" class="logo">
+    <svg class="logo-w" viewBox="0 0 36 36" fill="none">
+      <path d="M4 6 L11 28 L18 12 L25 28 L32 6" stroke="#2563eb" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="logo-name">WeRenT<span>Max</span></span>
+  </a>
+  <ul>
+    <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+    <li><a href="#comment">Comment ça marche</a></li>
+    <li><a href="#tarifs">Tarifs</a></li>
+  </ul>
+  <a href="#tarifs" class="btn-nav">Commencer</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-badge">Nouveau · Estimateur locatif pro</div>
+  <h1>Enfin un estimateur<br><em>simple, fiable et beau</em></h1>
+  <p class="hero-sub">
+    Générez en 30 secondes des estimations locatives professionnelles à vos couleurs — avec analyse de marché, saisonnalité et 3 scénarios de revenus. Vos clients signent plus vite. Vous gagnez du temps.
+  </p>
+  <div class="hero-cta">
+    <a href="#tarifs" class="btn-primary">Essayer gratuitement →</a>
+    <a href="#fonctionnalites" class="btn-ghost">Voir les fonctionnalités</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <strong>30s</strong>
+      <span>pour générer une estimation</span>
+    </div>
+    <div class="hero-stat">
+      <strong>3</strong>
+      <span>scénarios de revenus</span>
+    </div>
+    <div class="hero-stat">
+      <strong>100%</strong>
+      <span>personnalisable à vos couleurs</span>
+    </div>
+    <div class="hero-stat">
+      <strong>IA</strong>
+      <span>données marché en temps réel</span>
+    </div>
+  </div>
+</section>
+
+<!-- ── PREVIEW ── -->
+<div class="preview">
+  <div class="preview-card">
+    <div class="preview-header">
+      <span class="preview-title">Estimation · Appartement Paris 11e</span>
+      <span class="preview-badge">● IA en direct</span>
+    </div>
+    <div class="preview-scenarios">
+      <div class="scenario">
+        <div class="scenario-label">Phase lancement</div>
+        <div class="scenario-value">12 760 €</div>
+        <div class="scenario-sub">/ an · 38% occ · 92€/nuit</div>
+      </div>
+      <div class="scenario highlight">
+        <div class="scenario-label">Régime de croisière</div>
+        <div class="scenario-value" style="color:#60a5fa;">20 148 €</div>
+        <div class="scenario-sub">/ an · 48% occ · 115€/nuit</div>
+      </div>
+      <div class="scenario">
+        <div class="scenario-label">Avec WeRenTMax</div>
+        <div class="scenario-value" style="color:#22d3ee;">24 568 €</div>
+        <div class="scenario-sub">/ an · 53% occ · 127€/nuit</div>
+      </div>
+    </div>
+    <div style="margin-bottom:8px; font-size:11px; color:var(--muted); letter-spacing:1px; text-transform:uppercase;">Saisonnalité · Indice mensuel</div>
+    <div class="preview-bar">
+      <div class="bar" style="height:22%"></div>
+      <div class="bar" style="height:24%"></div>
+      <div class="bar" style="height:34%"></div>
+      <div class="bar" style="height:45%"></div>
+      <div class="bar" style="height:52%"></div>
+      <div class="bar peak" style="height:68%"></div>
+      <div class="bar peak" style="height:97%"></div>
+      <div class="bar peak" style="height:100%"></div>
+      <div class="bar peak" style="height:58%"></div>
+      <div class="bar" style="height:39%"></div>
+      <div class="bar" style="height:24%"></div>
+      <div class="bar" style="height:28%"></div>
+    </div>
+    <div style="display:flex; justify-content:space-between; margin-top:6px;">
+      <span style="font-size:10px; color:var(--muted)">Jan</span>
+      <span style="font-size:10px; color:var(--muted)">Mar</span>
+      <span style="font-size:10px; color:var(--cyan)">Juil — Août ↑</span>
+      <span style="font-size:10px; color:var(--muted)">Oct</span>
+      <span style="font-size:10px; color:var(--muted)">Déc</span>
+    </div>
+  </div>
+</div>
+
+<!-- ── FEATURES ── -->
+<section class="features" id="fonctionnalites">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label">Fonctionnalités</div>
+    <h2 class="section-title">Tout ce dont vos clients ont besoin pour dire oui</h2>
+    <p class="section-sub">WeRenTMax génère un document complet, professionnel et convaincant — en une poignée de clics.</p>
+    <div class="features-grid">
+      <div class="feature">
+        <div class="feature-icon">📊</div>
+        <h3>Analyse de marché locale</h3>
+        <p>Données réelles sur le secteur : taux d'occupation, ADR médian, saisonnalité, profil touristique. Sourcées en temps réel par IA.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">📈</div>
+        <h3>3 scénarios de revenus</h3>
+        <p>Lancement, croisière, objectif avec gestion pro. Chaque scénario détaillé : ADR, occupation, revenus mensuels et annuels.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🌤️</div>
+        <h3>Saisonnalité visuelle</h3>
+        <p>Graphique mensuel clair avec pics et creux identifiés. Vos clients comprennent d'un coup d'œil le potentiel de leur bien.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">🎨</div>
+        <h3>100% à vos couleurs</h3>
+        <p>Logo, couleurs, nom de votre agence. Chaque estimation sort avec votre identité visuelle — pas la nôtre.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">⚡</div>
+        <h3>Génération en 30 secondes</h3>
+        <p>Saisissez l'adresse, le type de bien, les équipements. L'IA fait le reste. Vous exportez un PDF prêt à envoyer.</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">✏️</div>
+        <h3>Données éditables</h3>
+        <p>Modifiez chaque chiffre avant d'exporter. Ajustez les hypothèses selon votre connaissance du terrain. Vous restez maître.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── HOW IT WORKS ── -->
+<section id="comment" style="background:var(--navy);">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label">Comment ça marche</div>
+    <h2 class="section-title">De l'adresse au PDF en 4 étapes</h2>
+    <p class="section-sub">Aucune formation requise. Si vous savez utiliser un formulaire en ligne, vous savez utiliser WeRenTMax.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Saisissez le bien</h3>
+        <p>Adresse, type, chambres, capacité, équipements premium, standing. 60 secondes maximum.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>L'IA analyse le marché</h3>
+        <p>Notre IA consulte les données réelles du secteur en temps réel : nuitées, fréquentation, concurrence Airbnb.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Ajustez si besoin</h3>
+        <p>Relancez l'analyse, modifiez les chiffres, personnalisez les scénarios selon votre expertise terrain.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h3>Exportez et envoyez</h3>
+        <p>PDF professionnel à vos couleurs, prêt à présenter à votre client. Signez plus vite, décrochez plus de mandats.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── BRANDING ── -->
+<section style="background:var(--navy2);">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="branding-row">
+      <div>
+        <div class="section-label">White-label</div>
+        <h2 class="section-title">Votre marque.<br>Notre moteur.</h2>
+        <p class="section-sub">Chaque estimation porte votre logo et vos couleurs. Vos clients voient votre professionnalisme — pas un logiciel générique. Vous gagnez en crédibilité commerciale à chaque rendez-vous.</p>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:12px;">
+          <li style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--muted);">
+            <span style="color:var(--cyan); font-weight:700;">✓</span> Logo de votre agence sur chaque document
+          </li>
+          <li style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--muted);">
+            <span style="color:var(--cyan); font-weight:700;">✓</span> Couleurs personnalisées à votre charte
+          </li>
+          <li style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--muted);">
+            <span style="color:var(--cyan); font-weight:700;">✓</span> Nom de votre agence en en-tête
+          </li>
+          <li style="display:flex; align-items:center; gap:10px; font-size:14px; color:var(--muted);">
+            <span style="color:var(--cyan); font-weight:700;">✓</span> Aucune mention WeRenTMax visible par votre client
+          </li>
+        </ul>
+      </div>
+      <div class="branding-visual">
+        <div style="font-size:11px; color:var(--muted); letter-spacing:2px; text-transform:uppercase; margin-bottom:20px;">Exemple · Agence Côte d'Azur</div>
+        <div class="brand-demo">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+            <div style="width:36px; height:36px; background:rgba(37,99,235,0.2); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:700; color:var(--blue);">CA</div>
+            <div>
+              <div style="font-size:13px; font-weight:600;">Côte d'Azur Premium Conciergerie</div>
+              <div style="font-size:11px; color:var(--muted);">Estimation locative · Données locales</div>
+            </div>
+          </div>
+          <div class="brand-bar"></div>
+          <div style="font-size:11px; color:var(--muted); margin-top:4px;">Charte couleur : #2563eb · #06b6d4</div>
+          <div style="margin-top:16px; font-size:11px; color:var(--muted); letter-spacing:1px; text-transform:uppercase; margin-bottom:8px;">Autre agence · Même outil</div>
+          <div class="brand-bar alt"></div>
+          <div style="font-size:11px; color:var(--muted); margin-top:4px;">Charte couleur : #7c3aed · #db2777</div>
+          <div class="brand-bar alt2" style="margin-top:12px;"></div>
+          <div style="font-size:11px; color:var(--muted); margin-top:4px;">Charte couleur : #059669 · #10b981</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ── -->
+<section class="pricing" id="tarifs">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="section-label">Tarifs</div>
+    <h2 class="section-title">Simple. Transparent. Sans surprise.</h2>
+    <p class="section-sub">Un abonnement mensuel, annulable à tout moment. Pas de frais cachés, pas d'engagement.</p>
+
+    <div class="pricing-toggle">
+      <span class="toggle-label active">Mensuel</span>
+      <button class="toggle"></button>
+      <span class="toggle-label">Annuel</span>
+      <span class="badge-save">−30%</span>
+    </div>
+
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <div class="plan-name">Solo</div>
+        <div class="plan-price"><sup>€</sup>29<sub>,90/mois</sub></div>
+        <p class="plan-desc">1 utilisateur · Idéal pour démarrer</p>
+        <ul class="plan-features">
+          <li>Estimations illimitées</li>
+          <li>Analyse IA marché en temps réel</li>
+          <li>3 scénarios de revenus</li>
+          <li>Graphique de saisonnalité</li>
+          <li>Export PDF professionnel</li>
+          <li>Personnalisation logo & couleurs</li>
+        </ul>
+        <a href="#" class="btn-plan btn-plan-ghost">Commencer</a>
+      </div>
+
+      <div class="pricing-card popular">
+        <div class="popular-tag">PLUS POPULAIRE</div>
+        <div class="plan-name">Équipe</div>
+        <div class="plan-price"><sup>€</sup>29<sub>,90 + 6,99€/user</sub></div>
+        <p class="plan-desc">Plusieurs utilisateurs · Pour les agences</p>
+        <ul class="plan-features">
+          <li>Tout le plan Solo</li>
+          <li>+6,99€ par utilisateur supplémentaire</li>
+          <li>Tableau de bord partagé</li>
+          <li>Historique des estimations</li>
+          <li>Support prioritaire</li>
+          <li>Onboarding personnalisé</li>
+        </ul>
+        <a href="#" class="btn-plan btn-plan-primary">Commencer →</a>
+      </div>
+    </div>
+
+    <p style="margin-top:24px; font-size:13px; color:var(--muted);">
+      Paiement sécurisé par carte bancaire via Stripe · Annulable à tout moment · Facture mensuelle automatique
+    </p>
+  </div>
+</section>
+
+<!-- ── CTA FINAL ── -->
+<section class="cta-final">
+  <h2>Votre prochain client attend<br>une estimation professionnelle.</h2>
+  <p>Rejoignez les agences qui concluent plus vite grâce à WeRenTMax.</p>
+  <a href="#tarifs" class="btn-primary" style="font-size:16px; padding:18px 40px;">Commencer gratuitement →</a>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <a href="#" class="logo">
+    <svg class="logo-w" viewBox="0 0 36 36" fill="none">
+      <path d="M4 6 L11 28 L18 12 L25 28 L32 6" stroke="#2563eb" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="logo-name">WeRenT<span>Max</span></span>
+  </a>
+  <p style="font-size:13px; color:var(--muted);">© 2026 WeRenTMax · Tous droits réservés</p>
+  <nav>
+    <ul>
+      <li><a href="#">Mentions légales</a></li>
+      <li><a href="#">CGU</a></li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+</footer>
+
+</body>
+</html>
