@@ -143,120 +143,30 @@
   .brand-bar.alt { background: linear-gradient(90deg,#7c3aed,#db2777); width: 75%; }
   .brand-bar.alt2 { background: linear-gradient(90deg,#059669,#10b981); width: 60%; }
 
-  <!-- PRICING -->
-<section class="pricing" id="tarifs">
-  <div style="max-width:1080px;margin:0 auto;">
-    <div class="section-label">Tarifs</div>
-    <h2 class="section-title">Simple et transparent.</h2>
-    <p class="section-sub">Un quota d'estimations chaque mois, annulable à tout moment. Au-delà, les estimations supplémentaires sont facturées à l'unité — toujours avec votre accord.</p>
+  /* PRICING */
+  .pricing { background: #f8fafc; }
+  .pricing-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; max-width: 1080px; }
+  .pricing-card { background: #ffffff; border: 1.5px solid #e2e8f0; border-radius: 16px; padding: 44px; position: relative; }
+  .pricing-card.popular { border-color: #2563eb; }
+  .popular-tag { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: #2563eb; color: #fff; font-size: 11px; font-weight: 600; padding: 4px 16px; border-radius: 100px; white-space: nowrap; letter-spacing: 1.5px; }
+  .plan-name { font-size: 12px; color: #64748b; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; font-weight: 500; }
+  .plan-price { font-family: 'DM Serif Display', serif; font-size: 56px; color: #0f172a; line-height: 1; margin-bottom: 8px; }
+  .plan-price sup { font-size: 24px; vertical-align: top; margin-top: 10px; font-family: 'DM Sans', sans-serif; }
+  .plan-price sub { font-size: 16px; color: #64748b; font-family: 'DM Sans', sans-serif; }
+  .plan-desc { font-size: 14px; color: #64748b; margin-bottom: 36px; }
+  .plan-features { list-style: none; display: flex; flex-direction: column; gap: 13px; margin-bottom: 40px; }
+  .plan-features li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; color: #0f172a; }
+  .plan-features li::before { content: '✓'; color: #2563eb; font-weight: 600; flex-shrink: 0; }
+  .btn-plan { display: block; text-align: center; padding: 15px; border-radius: 9px; font-size: 15px; font-weight: 500; text-decoration: none; cursor: pointer; border: none; transition: all .2s; font-family: 'DM Sans', sans-serif; }
+  .btn-plan-primary { background: #0f172a; color: #fff; }
+  .btn-plan-primary:hover { background: #1e293b; }
+  .btn-plan-ghost { background: transparent; color: #0f172a; border: 1.5px solid #e2e8f0; }
+  .btn-plan-ghost:hover { border-color: #94a3b8; }
 
-    <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:12px;padding:18px 26px;margin-bottom:36px;font-size:15px;color:#1e3a8a;">
-      <strong>19,90 € l'estimation à l'unité</strong> — deux fois moins cher que le marché. Et dès la <strong>2<sup>e</sup> estimation du mois</strong>, l'abonnement Solo est déjà rentable.
-    </div>
-
-    <div class="pricing-cards">
-
-      <div class="pricing-card">
-        <div class="plan-name">Découverte</div>
-        <div class="plan-price"><sup style="font-size:18px;">€</sup>0</div>
-        <p class="plan-desc">3 estimations offertes pour démarrer</p>
-        <ul class="plan-features">
-          <li>3 estimations incluses</li>
-          <li>Analyse IA marché en direct</li>
-          <li>3 scénarios de revenus</li>
-          <li>Export PDF professionnel</li>
-          <li>Logo &amp; couleurs personnalisés</li>
-        </ul>
-        <a href="https://app.werentmax.com/signup" class="btn-plan btn-plan-ghost">Commencer gratuitement</a>
-      </div>
-
-      <div class="pricing-card">
-        <div class="plan-name">À l'unité</div>
-        <div class="plan-price"><sup>€</sup>19<sub>,90 TTC</sub></div>
-        <p class="plan-desc">Par estimation · Sans abonnement</p>
-        <ul class="plan-features">
-          <li>1 estimation complète</li>
-          <li>Crédit valable 12 mois</li>
-          <li>Analyse IA marché en direct</li>
-          <li>3 scénarios de revenus</li>
-          <li>Export PDF professionnel</li>
-        </ul>
-        <a href="https://app.werentmax.com/signup" class="btn-plan btn-plan-ghost">Acheter une estimation</a>
-      </div>
-
-      <div class="pricing-card">
-        <div class="plan-name">Solo</div>
-        <div class="plan-price"><sup>€</sup>29<sub>,90/mois</sub></div>
-        <p class="plan-desc">10 estimations par mois · Rentable dès la 2<sup>e</sup></p>
-        <ul class="plan-features">
-          <li><strong>10 estimations</strong> incluses chaque mois</li>
-          <li>Puis 4,90 € par estimation supplémentaire</li>
-          <li>Analyse IA marché en direct</li>
-          <li>Export PDF à vos couleurs</li>
-          <li>Conseillers en option</li>
-        </ul>
-        <a href="https://app.werentmax.com/signup" class="btn-plan btn-plan-ghost">Commencer →</a>
-      </div>
-
-      <div class="pricing-card popular">
-        <div class="popular-tag">PLUS POPULAIRE</div>
-        <div class="plan-name">Pro</div>
-        <div class="plan-price"><sup>€</sup>59<sub>,90/mois</sub></div>
-        <p class="plan-desc">25 estimations par mois · Pour les agences actives</p>
-        <ul class="plan-features">
-          <li><strong>25 estimations</strong> incluses chaque mois</li>
-          <li>Puis 3,90 € par estimation supplémentaire</li>
-          <li>Analyse IA marché en direct</li>
-          <li>Export PDF à vos couleurs</li>
-          <li>Conseillers en option</li>
-        </ul>
-        <a href="https://app.werentmax.com/signup" class="btn-plan btn-plan-primary">Commencer →</a>
-      </div>
-
-      <div class="pricing-card">
-        <div class="plan-name">Business</div>
-        <div class="plan-price"><sup>€</sup>129<sub>,90/mois</sub></div>
-        <p class="plan-desc">70 estimations par mois · Pour les gros volumes</p>
-        <ul class="plan-features">
-          <li><strong>70 estimations</strong> incluses chaque mois</li>
-          <li>Puis 2,90 € par estimation supplémentaire</li>
-          <li>Analyse IA marché en direct</li>
-          <li>Export PDF à vos couleurs</li>
-          <li>Conseillers en option</li>
-        </ul>
-        <a href="https://app.werentmax.com/signup" class="btn-plan btn-plan-ghost">Commencer →</a>
-      </div>
-
-      <div class="pricing-card" style="background:#0f172a;border-color:#0f172a;">
-        <div class="plan-name" style="color:#94a3b8;">Réseau</div>
-        <div class="plan-price" style="color:#fff;font-size:38px;">Sur devis</div>
-        <p class="plan-desc" style="color:#94a3b8;">Franchises, réseaux de mandataires, multi-agences</p>
-        <ul class="plan-features">
-          <li style="color:#e2e8f0;">Volume d'estimations négocié</li>
-          <li style="color:#e2e8f0;">Plusieurs agences, une facturation</li>
-          <li style="color:#e2e8f0;">Marque blanche renforcée</li>
-          <li style="color:#e2e8f0;">Accompagnement dédié</li>
-          <li style="color:#e2e8f0;">Interlocuteur unique</li>
-        </ul>
-        <a href="mailto:contact@werentmax.com?subject=Demande%20formule%20Reseau%20WeRenTMax" class="btn-plan" style="background:#2563eb;color:#fff;">Nous contacter →</a>
-      </div>
-
-    </div>
-
-    <div style="margin-top:16px;">
-      <div class="pricing-card" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;padding:32px 40px;">
-        <div>
-          <div class="plan-name" style="margin-bottom:6px;">Vous travaillez en équipe ?</div>
-          <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#0f172a;">+ 6,99€ <span style="font-size:16px;font-family:'DM Sans',sans-serif;color:#64748b;">par conseiller et par mois</span></div>
-          <p style="font-size:14px;color:#64748b;margin-top:6px;">Ajoutez des conseillers à n'importe quelle formule. Ils partagent le quota de l'agence, et les sièges s'ajustent automatiquement au prorata.</p>
-        </div>
-        <a href="https://app.werentmax.com/signup" class="btn-plan btn-plan-primary" style="white-space:nowrap;padding:14px 28px;">Commencer →</a>
-      </div>
-    </div>
-
-    <p style="margin-top:28px;font-size:13px;color:#64748b;">Prix TTC · Paiement sécurisé Stripe · Résiliation en 1 clic depuis votre espace · Le quota se recharge chaque mois et ne se cumule pas</p>
-  </div>
-</section>
+  .pricing-highlight {
+    background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px;
+    padding: 16px 24px; margin-bottom: 32px; font-size: 15px; color: #1e3a8a; max-width: 1080px;
+  }
 
   /* CTA FINAL */
   .cta-final { text-align: center; padding: 120px 40px; background: #0f172a; }
@@ -338,7 +248,7 @@
   </div>
   <p class="hero-sub">Générez en 30 secondes des estimations locatives professionnelles à vos couleurs — analyse de marché, saisonnalité et 3 scénarios de revenus. Signez plus vite, gagnez en crédibilité.</p>
   <div class="hero-cta">
-    <a href="#tarifs" class="btn-primary">3 estimations offertes →</a>
+    <a href="https://app.werentmax.com/signup" class="btn-primary">3 estimations offertes →</a>
     <a href="#fonctionnalites" class="btn-ghost">Voir les fonctionnalités</a>
   </div>
   <div class="hero-stats">
@@ -518,59 +428,113 @@
   <div style="max-width:1080px;margin:0 auto;">
     <div class="section-label">Tarifs</div>
     <h2 class="section-title">Simple et transparent.</h2>
-    <p class="section-sub">Un abonnement mensuel, annulable à tout moment. Pas de frais cachés, pas d'engagement.</p>
+    <p class="section-sub">Un quota d'estimations chaque mois, annulable à tout moment. Au-delà, les estimations supplémentaires sont facturées à l'unité — toujours avec votre accord.</p>
+
+    <div class="pricing-highlight">
+      <strong>19,90 € l'estimation à l'unité</strong> — deux fois moins cher que le marché. Et dès la <strong>2<sup>e</sup> estimation du mois</strong>, l'abonnement Solo est déjà rentable.
+    </div>
+
     <div class="pricing-cards">
+
       <div class="pricing-card">
         <div class="plan-name">Découverte</div>
         <div class="plan-price"><sup style="font-size:18px;">€</sup>0</div>
-        <p class="plan-desc">3 estimations offertes · Sans carte bancaire</p>
+        <p class="plan-desc">3 estimations offertes pour démarrer</p>
         <ul class="plan-features">
           <li>3 estimations incluses</li>
           <li>Analyse IA marché en direct</li>
           <li>3 scénarios de revenus</li>
           <li>Export PDF professionnel</li>
+          <li>Logo &amp; couleurs personnalisés</li>
         </ul>
-        <a href="https://app.werentmax.com/signup?plan=free" class="btn-plan btn-plan-ghost">Commencer gratuitement</a>
+        <a href="https://app.werentmax.com/signup" class="btn-plan btn-plan-ghost">Commencer gratuitement</a>
       </div>
+
       <div class="pricing-card">
         <div class="plan-name">À l'unité</div>
-        <div class="plan-price"><sup>€</sup>19<sub> TTC</sub></div>
+        <div class="plan-price"><sup>€</sup>19<sub>,90 TTC</sub></div>
         <p class="plan-desc">Par estimation · Sans abonnement</p>
         <ul class="plan-features">
           <li>1 estimation complète</li>
+          <li>Crédit valable 12 mois</li>
           <li>Analyse IA marché en direct</li>
           <li>3 scénarios de revenus</li>
           <li>Export PDF professionnel</li>
-          <li>Logo & couleurs personnalisés</li>
         </ul>
         <a href="https://app.werentmax.com/signup" class="btn-plan btn-plan-ghost">Acheter une estimation</a>
       </div>
-      <div class="pricing-card popular">
-        <div class="popular-tag">PLUS POPULAIRE</div>
+
+      <div class="pricing-card">
         <div class="plan-name">Solo</div>
         <div class="plan-price"><sup>€</sup>29<sub>,90/mois</sub></div>
-        <p class="plan-desc">1 utilisateur · Estimations illimitées</p>
+        <p class="plan-desc">10 estimations par mois · Rentable dès la 2<sup>e</sup></p>
         <ul class="plan-features">
-          <li>Estimations illimitées</li>
+          <li><strong>10 estimations</strong> incluses chaque mois</li>
+          <li>Puis 4,90 € par estimation supplémentaire</li>
           <li>Analyse IA marché en direct</li>
-          <li>3 scénarios de revenus</li>
-          <li>Export PDF professionnel</li>
-          <li>Logo & couleurs personnalisés</li>
+          <li>Export PDF à vos couleurs</li>
+          <li>Conseillers en option</li>
+        </ul>
+        <a href="https://app.werentmax.com/signup" class="btn-plan btn-plan-ghost">Commencer →</a>
+      </div>
+
+      <div class="pricing-card popular">
+        <div class="popular-tag">PLUS POPULAIRE</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price"><sup>€</sup>59<sub>,90/mois</sub></div>
+        <p class="plan-desc">25 estimations par mois · Pour les agences actives</p>
+        <ul class="plan-features">
+          <li><strong>25 estimations</strong> incluses chaque mois</li>
+          <li>Puis 3,90 € par estimation supplémentaire</li>
+          <li>Analyse IA marché en direct</li>
+          <li>Export PDF à vos couleurs</li>
+          <li>Conseillers en option</li>
         </ul>
         <a href="https://app.werentmax.com/signup" class="btn-plan btn-plan-primary">Commencer →</a>
       </div>
+
+      <div class="pricing-card">
+        <div class="plan-name">Business</div>
+        <div class="plan-price"><sup>€</sup>129<sub>,90/mois</sub></div>
+        <p class="plan-desc">70 estimations par mois · Pour les gros volumes</p>
+        <ul class="plan-features">
+          <li><strong>70 estimations</strong> incluses chaque mois</li>
+          <li>Puis 2,90 € par estimation supplémentaire</li>
+          <li>Analyse IA marché en direct</li>
+          <li>Export PDF à vos couleurs</li>
+          <li>Conseillers en option</li>
+        </ul>
+        <a href="https://app.werentmax.com/signup" class="btn-plan btn-plan-ghost">Commencer →</a>
+      </div>
+
+      <div class="pricing-card">
+        <div class="plan-name">Réseau</div>
+        <div class="plan-price" style="font-size:38px;">Sur devis</div>
+        <p class="plan-desc">Franchises, réseaux de mandataires, multi-agences</p>
+        <ul class="plan-features">
+          <li>Volume d'estimations négocié</li>
+          <li>Plusieurs agences, une facturation</li>
+          <li>Marque blanche renforcée</li>
+          <li>Accompagnement dédié</li>
+          <li>Interlocuteur unique</li>
+        </ul>
+        <a href="mailto:contact@werentmax.com?subject=Demande%20formule%20Reseau%20WeRenTMax" class="btn-plan btn-plan-ghost">Nous contacter →</a>
+      </div>
+
     </div>
-    <div style="margin-top:16px;">
+
+    <div style="margin-top:24px;">
       <div class="pricing-card" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;padding:32px 40px;">
         <div>
-          <div class="plan-name" style="margin-bottom:6px;">Équipe</div>
-          <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#0f172a;">29,90€ <span style="font-size:16px;font-family:'DM Sans',sans-serif;color:#64748b;">+ 6,99€ / utilisateur supplémentaire</span></div>
-          <p style="font-size:14px;color:#64748b;margin-top:6px;">Tableau de bord partagé · Historique · Support prioritaire</p>
+          <div class="plan-name" style="margin-bottom:6px;">Vous travaillez en équipe ?</div>
+          <div style="font-family:'DM Serif Display',serif;font-size:28px;color:#0f172a;">+ 6,99€ <span style="font-size:16px;font-family:'DM Sans',sans-serif;color:#64748b;">par conseiller et par mois</span></div>
+          <p style="font-size:14px;color:#64748b;margin-top:6px;">Ajoutez des conseillers à n'importe quelle formule. Ils partagent le quota de l'agence, et les sièges s'ajustent automatiquement au prorata.</p>
         </div>
         <a href="https://app.werentmax.com/signup" class="btn-plan btn-plan-primary" style="white-space:nowrap;padding:14px 28px;">Commencer →</a>
       </div>
     </div>
-    <p style="margin-top:28px;font-size:13px;color:#64748b;">Paiement sécurisé · Stripe · Annulable à tout moment</p>
+
+    <p style="margin-top:28px;font-size:13px;color:#64748b;">Prix TTC · Paiement sécurisé Stripe · Résiliation en 1 clic depuis votre espace · Le quota se recharge chaque mois et ne se cumule pas</p>
   </div>
 </section>
 
@@ -578,7 +542,7 @@
 <section class="cta-final">
   <h2>Votre prochain client attend<br>une estimation <em>professionnelle.</em></h2>
   <p>Rejoignez les agences qui concluent plus vite grâce à WeRenTMax.</p>
-  <a href="https://app.werentmax.com/signup?plan=free" class="btn-white">Commencer gratuitement →</a>
+  <a href="https://app.werentmax.com/signup" class="btn-white">Commencer gratuitement →</a>
 </section>
 
 <!-- FOOTER -->
@@ -592,9 +556,9 @@
   <p>© 2026 WeRenTMax · Tous droits réservés</p>
   <ul class="footer-links">
     <li><a href="/cgv.html">Mentions légales</a></li>
-<li><a href="/cgv.html">CGV</a></li>
-   <li><a href="/confidentialite.html">Confidentialité</a></li>
-<li><a href="mailto:contact@werentmax.com">Contact</a></li>
+    <li><a href="/cgv.html">CGV</a></li>
+    <li><a href="/confidentialite.html">Confidentialité</a></li>
+    <li><a href="mailto:contact@werentmax.com">Contact</a></li>
   </ul>
 </footer>
 
