@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Politique de confidentialité — WeRenTMax</title>
+<meta name="description" content="Politique de confidentialité et protection des données personnelles de la plateforme WeRenTMax, éditée par Holihost LLC.">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family:'DM Sans',sans-serif;
+    color:#0f172a;
+    background:#fff;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+  a { color:#2563eb; text-decoration:none; }
+  a:hover { text-decoration:underline; }
+
+  /* NAVBAR */
+  .nav {
+    position:sticky; top:0; z-index:100;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid #e2e8f0;
+    padding:16px 24px;
+  }
+  .nav-inner {
+    max-width:1100px; margin:0 auto;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .logo { display:flex; align-items:center; gap:9px; }
+  .logo-name { font-size:18px; font-weight:700; color:#0f172a; }
+  .logo-name span { color:#2563eb; }
+  .nav-actions { display:flex; align-items:center; gap:16px; }
+  .nav-link { font-size:14px; font-weight:500; color:#475569; }
+  .btn-primary {
+    background:#2563eb; color:#fff;
+    padding:9px 18px; border-radius:9px;
+    font-size:14px; font-weight:500;
+  }
+  .btn-primary:hover { background:#1d4ed8; text-decoration:none; }
+
+  /* HEADER */
+  .page-header {
+    max-width:820px; margin:0 auto;
+    padding:64px 24px 32px;
+  }
+  .page-header h1 {
+    font-family:'DM Serif Display',serif;
+    font-size:42px; font-weight:400;
+    letter-spacing:-0.5px; margin-bottom:12px;
+  }
+  .page-header .meta { font-size:14px; color:#64748b; }
+
+  /* SOMMAIRE */
+  .toc-wrap { max-width:820px; margin:0 auto 40px; padding:0 24px; }
+  .toc {
+    padding:22px 26px;
+    background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px;
+  }
+  .toc h2 { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:#64748b; margin-bottom:12px; }
+  .toc ol { list-style:none; counter-reset:toc; columns:2; column-gap:32px; }
+  .toc li { counter-increment:toc; font-size:14px; margin-bottom:7px; break-inside:avoid; }
+  .toc li::before { content:counter(toc) ". "; color:#94a3b8; }
+
+  /* CONTENU */
+  .content { max-width:820px; margin:0 auto; padding:0 24px 72px; }
+  .content h2 {
+    font-family:'DM Serif Display',serif;
+    font-size:26px; font-weight:400;
+    margin:44px 0 14px; padding-top:12px;
+    border-top:1px solid #e2e8f0;
+  }
+  .content h3 { font-size:16px; font-weight:700; margin:26px 0 8px; color:#1e293b; }
+  .content p { margin-bottom:14px; color:#334155; }
+  .content ul { margin:0 0 16px 22px; color:#334155; }
+  .content li { margin-bottom:8px; }
+  .content strong { color:#0f172a; font-weight:700; }
+  .callout {
+    background:#eff6ff; border:1px solid #bfdbfe;
+    border-left:3px solid #2563eb;
+    border-radius:10px; padding:16px 20px; margin:18px 0;
+    font-size:15px; color:#1e3a8a;
+  }
+  .legal-block {
+    background:#f8fafc; border:1px solid #e2e8f0;
+    border-radius:12px; padding:22px 26px; margin-top:16px;
+    font-size:15px;
+  }
+  .legal-block p { margin-bottom:10px; }
+
+  /* TABLEAU */
+  table { width:100%; border-collapse:collapse; margin:16px 0 20px; font-size:14px; }
+  th, td { text-align:left; padding:10px 12px; border-bottom:1px solid #e2e8f0; vertical-align:top; }
+  th { background:#f8fafc; font-weight:700; color:#0f172a; font-size:13px; }
+  td { color:#334155; }
+
+  /* FOOTER */
+  footer {
+    border-top:1px solid #e2e8f0;
+    padding:40px 24px;
+    text-align:center;
+  }
+  footer .logo { justify-content:center; margin-bottom:14px; }
+  footer p { font-size:13px; color:#64748b; margin-bottom:14px; }
+  .footer-links { list-style:none; display:flex; gap:22px; justify-content:center; flex-wrap:wrap; }
+  .footer-links a { font-size:13px; color:#64748b; }
+
+  @media(max-width:640px){
+    .page-header h1 { font-size:30px; }
+    .toc ol { columns:1; }
+    .nav-link { display:none; }
+    table { font-size:13px; }
+    th, td { padding:8px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <svg width="26" height="26" viewBox="0 0 28 28" fill="none">
+        <path d="M3 5 L8.5 22 L14 9 L19.5 22 L25 5" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="logo-name">WeRenT<span>Max</span></span>
+    </a>
+    <div class="nav-actions">
+      <a href="/" class="nav-link">Accueil</a>
+      <a href="https://app.werentmax.com/login" class="nav-link">Se connecter</a>
+      <a href="https://app.werentmax.com/signup" class="btn-primary">S'inscrire</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header">
+  <h1>Politique de confidentialité</h1>
+  <p class="meta">Dernière mise à jour : 5 août 2026 · Plateforme WeRenTMax, éditée par Holihost LLC</p>
+</div>
+
+<!-- SOMMAIRE -->
+<div class="toc-wrap">
+  <div class="toc">
+    <h2>Sommaire</h2>
+    <ol>
+      <li><a href="#art1">Qui traite vos données</a></li>
+      <li><a href="#art2">Notre double rôle</a></li>
+      <li><a href="#art3">Données collectées</a></li>
+      <li><a href="#art4">Finalités et bases légales</a></li>
+      <li><a href="#art5">Destinataires des données</a></li>
+      <li><a href="#art6">Transferts hors Union européenne</a></li>
+      <li><a href="#art7">Durées de conservation</a></li>
+      <li><a href="#art8">Vos droits</a></li>
+      <li><a href="#art9">Sécurité</a></li>
+      <li><a href="#art10">Cookies</a></li>
+      <li><a href="#art11">Mineurs</a></li>
+      <li><a href="#art12">Modifications et contact</a></li>
+    </ol>
+  </div>
+</div>
+
+<!-- CONTENU -->
+<main class="content">
+
+<h2 id="art1">1. Qui traite vos données</h2>
+<p>La plateforme WeRenTMax (werentmax.com et app.werentmax.com) est éditée par <strong>Holihost LLC</strong>, 1209 Mountain Road NW, PL NE #5040, Albuquerque, New Mexico 87102, États-Unis d'Amérique.</p>
+<p>Holihost LLC s'engage à protéger les données personnelles de ses utilisateurs conformément au Règlement Général sur la Protection des Données (RGPD) pour les personnes situées dans l'Union européenne, ainsi qu'aux autres réglementations applicables en matière de protection des données.</p>
+<p>Pour toute question relative à vos données personnelles : <a href="mailto:contact@werentmax.com">contact@werentmax.com</a></p>
+
+<h2 id="art2">2. Notre double rôle</h2>
+<p>WeRenTMax traite deux catégories de données très différentes, avec des responsabilités distinctes. Cette distinction est importante pour comprendre à qui vous devez vous adresser pour exercer vos droits.</p>
+
+<h3>2.1 Nous sommes responsable de traitement</h3>
+<p>Pour les données de nos <strong>clients professionnels</strong> : les informations de votre compte, de votre agence, de vos conseillers et de votre facturation. Nous décidons pourquoi et comment ces données sont traitées.</p>
+
+<h3>2.2 Nous sommes sous-traitant</h3>
+<div class="callout">
+  Pour les données que <strong>vous saisissez sur vos propres prospects et clients</strong> (nom, email, téléphone, informations sur leur bien), c'est <strong>vous</strong> qui êtes responsable de traitement. Nous nous contentons de les héberger et de les traiter selon vos instructions, dans le cadre du service.
+</div>
+<p>Concrètement : si l'un de vos prospects souhaite savoir quelles données vous détenez sur lui, ou demander leur suppression, il doit s'adresser <strong>à vous</strong>, et non à Holihost LLC. Il vous appartient de disposer d'une base légale valable pour saisir ces informations dans la plateforme, et d'informer les personnes concernées.</p>
+
+<h2 id="art3">3. Données collectées</h2>
+
+<h3>3.1 Données de compte</h3>
+<p>Adresse email, nom et prénom, mot de passe (stocké sous forme chiffrée et jamais accessible en clair), rôle au sein de l'agence.</p>
+
+<h3>3.2 Données professionnelles</h3>
+<p>Nom de l'agence, coordonnées professionnelles (téléphone, email, adresse, site web), logo et couleurs de votre charte graphique, taux de commission, coordonnées de vos conseillers.</p>
+
+<h3>3.3 Données saisies dans les estimations</h3>
+<p>Caractéristiques et adresse des biens estimés, notes internes, et le cas échéant les coordonnées des prospects ou propriétaires concernés (voir article 2.2).</p>
+
+<h3>3.4 Données de facturation</h3>
+<p>Formule souscrite, historique des paiements et identifiants techniques de facturation. <strong>Nous n'avons jamais accès à vos numéros de carte bancaire</strong> : ils sont collectés et conservés directement par notre prestataire de paiement, sur ses propres serveurs sécurisés.</p>
+
+<h3>3.5 Données techniques</h3>
+<p>Journaux de connexion, adresse IP, type de navigateur, horodatage des actions effectuées sur la plateforme. Ces données servent au fonctionnement, à la sécurité et au diagnostic technique du service.</p>
+
+<h2 id="art4">4. Finalités et bases légales</h2>
+<table>
+  <thead>
+    <tr><th>Finalité</th><th>Base légale</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Créer et gérer votre compte, fournir le service</td><td>Exécution du contrat</td></tr>
+    <tr><td>Générer les documents d'estimation</td><td>Exécution du contrat</td></tr>
+    <tr><td>Traiter les paiements et émettre les factures</td><td>Exécution du contrat et obligation légale</td></tr>
+    <tr><td>Assurer la sécurité et prévenir les usages frauduleux</td><td>Intérêt légitime</td></tr>
+    <tr><td>Répondre à vos demandes d'assistance</td><td>Exécution du contrat et intérêt légitime</td></tr>
+    <tr><td>Améliorer la plateforme et corriger les anomalies</td><td>Intérêt légitime</td></tr>
+    <tr><td>Vous envoyer des informations sur le service</td><td>Intérêt légitime, avec possibilité de refus à tout moment</td></tr>
+    <tr><td>Conserver les pièces comptables</td><td>Obligation légale</td></tr>
+  </tbody>
+</table>
+
+<h2 id="art5">5. Destinataires des données</h2>
+<p>Vos données ne sont ni vendues, ni louées, ni échangées à des fins commerciales. Elles ne sont accessibles qu'aux personnes habilitées de Holihost LLC et aux prestataires techniques strictement nécessaires au fonctionnement du service, à savoir :</p>
+<ul>
+  <li>un <strong>hébergeur de base de données</strong>, dont les serveurs sont situés dans l'Union européenne (Irlande) ;</li>
+  <li>un <strong>hébergeur applicatif</strong> assurant la mise à disposition de la plateforme ;</li>
+  <li>un <strong>prestataire de paiement</strong> (Stripe) traitant les transactions et conservant les moyens de paiement ;</li>
+  <li>un <strong>fournisseur de service d'intelligence artificielle</strong>, sollicité pour produire l'analyse de marché ;</li>
+  <li>un <strong>service de recherche et de normalisation d'adresses</strong>, interrogé lors de la saisie d'une adresse.</li>
+</ul>
+<p>Chacun de ces prestataires agit en qualité de sous-traitant, sur la base d'engagements contractuels de confidentialité et de sécurité. La liste nominative détaillée de nos sous-traitants peut être communiquée sur simple demande à <a href="mailto:contact@werentmax.com">contact@werentmax.com</a>.</p>
+<p>Vos données peuvent également être communiquées aux autorités administratives ou judiciaires lorsque la loi l'exige.</p>
+
+<h2 id="art6">6. Transferts hors Union européenne</h2>
+<p>Holihost LLC est établie aux États-Unis, et certains de nos prestataires techniques sont également situés hors de l'Union européenne. Vos données peuvent donc faire l'objet de transferts hors de l'Espace économique européen.</p>
+<p>Ces transferts sont encadrés par les garanties appropriées prévues par le RGPD, notamment les clauses contractuelles types de la Commission européenne ou, le cas échéant, les mécanismes de certification applicables. La base de données principale contenant vos comptes et vos estimations est quant à elle hébergée <strong>dans l'Union européenne (Irlande)</strong>.</p>
+
+<h2 id="art7">7. Durées de conservation</h2>
+<table>
+  <thead>
+    <tr><th>Donnée</th><th>Durée</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Compte et données associées</td><td>Toute la durée de la relation contractuelle</td></tr>
+    <tr><td>Après résiliation ou suppression du compte</td><td>Suppression à l'issue d'un délai de 30 jours permettant l'export de vos documents</td></tr>
+    <tr><td>Documents d'estimation</td><td>Jusqu'à leur suppression par vos soins, ou 30 jours après la fin du compte</td></tr>
+    <tr><td>Pièces comptables et factures</td><td>Durée légale de conservation applicable</td></tr>
+    <tr><td>Journaux techniques et de sécurité</td><td>12 mois maximum</td></tr>
+  </tbody>
+</table>
+
+<h2 id="art8">8. Vos droits</h2>
+<p>Conformément au RGPD, vous disposez des droits suivants sur vos données personnelles :</p>
+<ul>
+  <li><strong>Accès</strong> : obtenir une copie des données que nous détenons sur vous ;</li>
+  <li><strong>Rectification</strong> : corriger des données inexactes ou incomplètes ;</li>
+  <li><strong>Effacement</strong> : demander la suppression de vos données, sous réserve de nos obligations légales de conservation ;</li>
+  <li><strong>Limitation</strong> : demander le gel temporaire du traitement ;</li>
+  <li><strong>Portabilité</strong> : recevoir vos données dans un format structuré et lisible par machine ;</li>
+  <li><strong>Opposition</strong> : vous opposer à un traitement fondé sur notre intérêt légitime.</li>
+</ul>
+<p>La plupart de ces droits s'exercent directement depuis votre compte : vos informations personnelles et celles de votre agence sont modifiables dans les paramètres, et vos estimations sont exportables à tout moment au format PDF.</p>
+<p>Pour toute autre demande, écrivez à <a href="mailto:contact@werentmax.com">contact@werentmax.com</a>. Nous y répondons dans un délai d'un mois. Une pièce justificative d'identité pourra vous être demandée en cas de doute raisonnable sur l'identité du demandeur.</p>
+<div class="callout">
+  Si vous estimez que vos droits ne sont pas respectés, vous pouvez introduire une réclamation auprès de l'autorité de contrôle de votre pays de résidence. En France, il s'agit de la <strong>CNIL</strong> (Commission Nationale de l'Informatique et des Libertés), 3 place de Fontenoy, 75007 Paris — <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>.
+</div>
+
+<h2 id="art9">9. Sécurité</h2>
+<p>Nous mettons en œuvre des mesures techniques et organisationnelles adaptées pour protéger vos données :</p>
+<ul>
+  <li>chiffrement des échanges entre votre navigateur et nos serveurs (HTTPS) ;</li>
+  <li>mots de passe stockés sous forme chiffrée, jamais accessibles en clair ;</li>
+  <li>cloisonnement strict des données entre agences : aucun client ne peut accéder aux estimations d'un autre ;</li>
+  <li>contrôle d'accès par rôle au sein de chaque agence ;</li>
+  <li>vérification systématique des autorisations côté serveur, indépendamment de l'interface ;</li>
+  <li>hébergement chez des prestataires reconnus offrant des garanties de sécurité et de disponibilité.</li>
+</ul>
+<p>Aucun système n'étant infaillible, nous nous engageons, en cas de violation de données susceptible d'engendrer un risque pour vos droits et libertés, à en informer l'autorité de contrôle compétente et les personnes concernées dans les conditions prévues par le RGPD.</p>
+
+<h2 id="art10">10. Cookies</h2>
+
+<h3>10.1 Cookies strictement nécessaires</h3>
+<p>La plateforme utilise un cookie de session indispensable pour vous maintenir connecté d'une page à l'autre. Sans lui, vous devriez saisir vos identifiants à chaque écran. Ce cookie ne poursuit aucune finalité publicitaire ni de suivi, et il est supprimé lorsque vous vous déconnectez.</p>
+<p>Conformément à la réglementation, les cookies strictement nécessaires au fonctionnement du service ne requièrent pas votre consentement préalable.</p>
+
+<h3>10.2 Mesure d'audience et autres cookies</h3>
+<p>À la date de la présente politique, aucun cookie de mesure d'audience, de publicité ou de suivi comportemental n'est déposé sur nos sites.</p>
+<p>Si de tels outils venaient à être mis en place, un bandeau de consentement vous serait présenté lors de votre première visite, vous permettant d'accepter ou de refuser chaque catégorie de cookies, de modifier votre choix à tout moment, et de refuser aussi facilement que d'accepter. Aucun cookie non essentiel ne serait déposé avant l'expression de votre choix, et la présente politique serait mise à jour en conséquence.</p>
+
+<h3>10.3 Gérer vos cookies</h3>
+<p>Vous pouvez à tout moment configurer votre navigateur pour bloquer ou supprimer les cookies. Le blocage du cookie de session empêchera toutefois la connexion à votre espace WeRenTMax.</p>
+
+<h2 id="art11">11. Mineurs</h2>
+<p>WeRenTMax est un service destiné exclusivement aux professionnels. Nous ne collectons pas sciemment de données concernant des personnes mineures. Si vous estimez qu'un mineur nous a transmis des données personnelles, contactez-nous afin que nous procédions à leur suppression.</p>
+
+<h2 id="art12">12. Modifications et contact</h2>
+<p>La présente politique peut être modifiée pour refléter des évolutions du service, de nos prestataires ou de la réglementation. La date de dernière mise à jour figure en tête de document. En cas de modification substantielle, vous en serez informé par courriel ou par une notification dans l'application.</p>
+<div class="legal-block">
+  <p><strong>Responsable du traitement</strong><br>
+  Holihost LLC<br>
+  1209 Mountain Road NW, PL NE #5040<br>
+  Albuquerque, New Mexico 87102<br>
+  États-Unis d'Amérique</p>
+
+  <p><strong>Contact — protection des données</strong><br>
+  <a href="mailto:contact@werentmax.com">contact@werentmax.com</a></p>
+
+  <p><strong>Documents liés</strong><br>
+  <a href="/cgv.html">Conditions Générales d'Utilisation et de Vente</a></p>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer>
+  <a href="/" class="logo">
+    <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+      <path d="M3 5 L8.5 22 L14 9 L19.5 22 L25 5" stroke="#2563eb" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="logo-name">WeRenT<span>Max</span></span>
+  </a>
+  <p>© 2026 WeRenTMax · Holihost LLC · Tous droits réservés</p>
+  <ul class="footer-links">
+    <li><a href="/cgv.html">Mentions légales</a></li>
+    <li><a href="/cgv.html">CGU-CGV</a></li>
+    <li><a href="/confidentialite.html">Confidentialité</a></li>
+    <li><a href="mailto:contact@werentmax.com">Contact</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
