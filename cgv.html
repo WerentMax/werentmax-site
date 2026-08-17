@@ -109,6 +109,82 @@
     .nav-link { display:none; }
   }
 </style>
+<!-- ═══════════ CONSENTEMENT COOKIES + META PIXEL — WeRenTMax ═══════════ -->
+<!-- ⚠️  REMPLACEZ ci-dessous VOTRE_ID_PIXEL par l'identifiant du Gestionnaire d'événements Meta -->
+<style>
+  #wrm-consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:9999;max-width:560px;margin:0 auto;background:#fff;border:1px solid #e2e8f0;border-radius:14px;box-shadow:0 12px 40px rgba(15,23,42,.16);padding:22px 24px;font-family:'DM Sans',sans-serif;color:#0f172a;font-size:15px;line-height:1.6}
+  #wrm-consent h4{font-size:16px;font-weight:600;margin:0 0 8px}
+  #wrm-consent p{margin:0 0 16px;color:#475569;font-size:14.5px}
+  #wrm-consent a{color:#2563eb}
+  .wrm-consent-btns{display:flex;gap:10px;flex-wrap:wrap}
+  .wrm-consent-btns button{flex:1 1 140px;padding:11px 18px;border-radius:9px;font-family:inherit;font-size:14.5px;font-weight:500;cursor:pointer;border:1px solid #cbd5e1;background:#fff;color:#0f172a;transition:.15s}
+  .wrm-consent-btns button:hover{border-color:#94a3b8}
+  .wrm-consent-btns button.wrm-accept{background:#2563eb;border-color:#2563eb;color:#fff}
+  .wrm-consent-btns button.wrm-accept:hover{background:#1d4ed8}
+  @media(max-width:520px){#wrm-consent{padding:18px}}
+</style>
+<script>
+(function () {
+  var FB_PIXEL_ID = '1360365586218614';
+  var KEY = 'wrm_consent_v1';
+
+  function loadPixel() {
+    if (window.fbq || !FB_PIXEL_ID || FB_PIXEL_ID === 'VOTRE_ID_PIXEL') return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', FB_PIXEL_ID);
+    fbq('track', 'PageView');
+  }
+
+  function save(choice) {
+    try { localStorage.setItem(KEY, choice); } catch (e) {}
+    var b = document.getElementById('wrm-consent');
+    if (b) b.remove();
+    if (choice === 'granted') loadPixel();
+  }
+
+  function banner() {
+    if (document.getElementById('wrm-consent')) return;
+    var d = document.createElement('div');
+    d.id = 'wrm-consent';
+    d.setAttribute('role', 'dialog');
+    d.setAttribute('aria-label', 'Gestion des cookies');
+    d.innerHTML =
+      '<h4>Cookies de mesure d\u2019audience</h4>' +
+      '<p>Nous souhaitons déposer des cookies de mesure d\u2019audience et de publicité (Meta) pour comprendre comment notre site est utilisé. Ils ne sont pas nécessaires au fonctionnement du service. Vous pouvez refuser sans aucune conséquence. Détails dans notre <a href="/confidentialite.html">politique de confidentialité</a>.</p>' +
+      '<div class="wrm-consent-btns">' +
+        '<button type="button" id="wrm-refuse">Refuser</button>' +
+        '<button type="button" class="wrm-accept" id="wrm-accept">Accepter</button>' +
+      '</div>';
+    document.body.appendChild(d);
+    document.getElementById('wrm-accept').onclick = function () { save('granted'); };
+    document.getElementById('wrm-refuse').onclick = function () { save('denied'); };
+  }
+
+  // Permet de rouvrir le choix (ex. lien "Gérer mes cookies" en pied de page)
+  window.wrmOpenConsent = function () {
+    try { localStorage.removeItem(KEY); } catch (e) {}
+    banner();
+  };
+
+  var choice = null;
+  try { choice = localStorage.getItem(KEY); } catch (e) {}
+
+  if (choice === 'granted') {
+    loadPixel();
+  } else if (choice !== 'denied') {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', banner);
+    } else {
+      banner();
+    }
+  }
+})();
+</script>
+<!-- ═══════════ FIN CONSENTEMENT + META PIXEL ═══════════ -->
 </head>
 <body>
 
