@@ -39,6 +39,12 @@ nav .inner{display:flex;align-items:center;gap:28px;height:66px}
 nav .links{display:flex;gap:26px;margin-left:auto;align-items:center}
 nav .links a{font-size:14.5px;color:var(--muted);text-decoration:none}
 nav .links a:hover{color:var(--blue)}
+/* Les boutons gardent leur propre couleur : sans ces regles, la couleur de
+   lien de la navigation l'emporte et le texte devient illisible sur le bleu. */
+nav .links a.btn-primary{color:#fff}
+nav .links a.btn-primary:hover{color:#fff}
+nav .links a.btn-ghost{color:var(--navy)}
+nav .links a.btn-ghost:hover{color:var(--blue)}
 
 .hero{background:linear-gradient(180deg,#fff 0%,var(--bg) 100%);padding:70px 0 78px;text-align:center}
 .pill{display:inline-flex;align-items:center;gap:9px;background:#fff;border:1px solid var(--line);
@@ -488,7 +494,7 @@ footer a:hover{color:#7FB0FF}
           <li><svg class="ic"><use href="#i-check"/></svg>Crédit valable 12 mois</li>
           <li><svg class="ic"><use href="#i-check"/></svg>Les 4 estimateurs</li>
         </ul>
-        <a href="https://app.werentmax.com/signup" class="btn btn-ghost">Acheter une estimation</a>
+        <a href="https://app.werentmax.com/tarifs?plan=unite" class="btn btn-ghost">Acheter une estimation</a>
       </div>
 
       <div class="plan">
@@ -499,7 +505,7 @@ footer a:hover{color:#7FB0FF}
           <li><svg class="ic"><use href="#i-check"/></svg>Puis 5,90 € l'unité</li>
           <li><svg class="ic"><use href="#i-check"/></svg>Conseillers en option</li>
         </ul>
-        <a href="https://app.werentmax.com/signup" class="btn btn-ghost">Commencer →</a>
+        <a href="https://app.werentmax.com/tarifs?plan=solo_mensuel" class="btn btn-ghost">Commencer →</a>
       </div>
 
       <div class="plan pop">
@@ -511,7 +517,7 @@ footer a:hover{color:#7FB0FF}
           <li><svg class="ic"><use href="#i-check"/></svg>Puis 4,90 € l'unité</li>
           <li><svg class="ic"><use href="#i-check"/></svg>Quota partagé par l'équipe</li>
         </ul>
-        <a href="https://app.werentmax.com/signup" class="btn btn-primary">Commencer →</a>
+        <a href="https://app.werentmax.com/tarifs?plan=pro" class="btn btn-primary">Commencer →</a>
       </div>
 
       <div class="plan">
@@ -522,7 +528,7 @@ footer a:hover{color:#7FB0FF}
           <li><svg class="ic"><use href="#i-check"/></svg>Puis 3,90 € l'unité</li>
           <li><svg class="ic"><use href="#i-check"/></svg>Quota partagé par l'équipe</li>
         </ul>
-        <a href="https://app.werentmax.com/signup" class="btn btn-ghost">Commencer →</a>
+        <a href="https://app.werentmax.com/tarifs?plan=business" class="btn btn-ghost">Commencer →</a>
       </div>
 
       <div class="plan">
