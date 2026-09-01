@@ -3,727 +3,493 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>WeRenTMax — Estimation locative pour les professionnels de la location courte durée</title>
-<meta name="description" content="Generez en trois minutes une etude de revenus locatifs a votre marque : trois scenarios, saisonnalite mois par mois, PDF en marque blanche. Trois estimations offertes.">
-<meta name="robots" content="index, follow">
+<title>WeRenTMax — Estimation locative pour les professionnels</title>
+<meta name="description" content="Courte durée, colocation étudiante, bail mobilité, gestion mixte : chiffrez toutes les stratégies sur un même bien et remettez un rapport à votre marque. Trois estimations offertes.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root{
-  --primary:#0F3460;
-  --primary-dark:#0a1f3d;
-  --accent:#2ECC8A;
-  --accent-dark:#1aaf6e;
-  --orange:#F5A623;
-  --blue:#3B82F6;
-  --purple:#8B5CF6;
-  --bg:#E8EDF2;
-  --text:#1a1a2e;
-  --muted:#6B7280;
-  --border:#E2E8F0;
-  --steel:#A9BACD;
+  --blue:#2563EB; --blue-dk:#1D4ED8; --blue-soft:#EFF6FF;
+  --navy:#0F172A; --navy-2:#1E3A5F; --navy-deep:#0F1E33;
+  --bg:#F8FAFC; --bg-2:#EEF2F7;
+  --ink:#0F172A; --muted:#64748B; --line:#E2E8F0;
 }
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:var(--bg-2);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.6}
+h1,h2,h3,h4{font-family:'DM Serif Display',serif;font-weight:400;line-height:1.14;letter-spacing:-.4px}
+svg.ic{width:18px;height:18px;stroke:var(--blue);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
 
-*{box-sizing:border-box;margin:0;padding:0;}
-html{background:#B7C2CE;}
-body{
-  font-family:'DM Sans',-apple-system,'Segoe UI',Arial,sans-serif;
-  color:var(--text);
-  font-size:9.5pt;
-  line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-}
+/* ---------- FEUILLE A4 ---------- */
+.page{width:210mm;min-height:297mm;background:#fff;margin:0 auto 14mm;padding:16mm 16mm 14mm;
+  position:relative;box-shadow:0 8px 40px rgba(15,23,42,.12);display:flex;flex-direction:column}
+.ph{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:9px;
+  border-bottom:1px solid var(--line);margin-bottom:20px}
+.ph .lg{font-family:'DM Serif Display',serif;font-size:17px;color:var(--navy)}
+.ph .lg span{color:var(--blue)}
+.ph .sec{font-size:9.5px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;color:var(--muted)}
+.pf{margin-top:auto;padding-top:12px;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;font-size:9.5px;color:#94A3B8;letter-spacing:.4px}
 
-.sheet{
-  position:relative;
-  width:210mm;
-  height:297mm;
-  margin:9mm auto;
-  background:#fff;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  box-shadow:0 6px 28px rgba(15,52,96,.28);
-}
+.eyebrow{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+h2.t{font-size:30px;color:var(--ink);margin-bottom:12px}
+h2.t em{font-style:italic;color:var(--blue)}
+p.lead{font-size:13px;color:var(--muted);margin-bottom:18px}
+p.lead b{color:var(--ink)}
 
-/* ---------- en-tête / pied ---------- */
-.brandbar{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:9mm 15mm 0;flex-shrink:0;
-}
-.logo{
-  font-family:'DM Serif Display',Georgia,serif;
-  font-size:17pt;color:var(--primary);line-height:1;letter-spacing:-.01em;
-}
-.logo span{color:var(--accent);}
-.brandbar .right{
-  font-size:7pt;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);
-}
-.inner{padding:0 15mm;flex:1;display:flex;flex-direction:column;}
-.pagefoot{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:0 15mm 7mm;font-size:7pt;color:#9AA6B4;letter-spacing:.06em;flex-shrink:0;
-}
+/* ---------- MODES ---------- */
+.modes{margin:18px 0 20px}
+.mg{margin-bottom:11px}
+.mg .lb{font-size:8.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:#94A3B8;margin-bottom:6px}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);
+  border-radius:100px;padding:4px 11px 4px 4px;font-size:10.5px;font-weight:600;color:var(--ink)}
+.chip i{width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-style:normal;font-size:9px;font-weight:800;color:#fff;flex-shrink:0}
+.chip.hl{border-color:var(--blue);background:var(--blue-soft)}
 
-/* ---------- typo de section ---------- */
-.section-label{
-  font-size:7.5pt;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
-  color:var(--accent-dark);margin-bottom:3mm;
-}
-.section-title{
-  font-family:'DM Serif Display',Georgia,serif;
-  font-size:19pt;line-height:1.15;color:var(--primary);
-  letter-spacing:-.01em;margin-bottom:3mm;
-}
-.section-sub{
-  font-size:9.5pt;color:var(--muted);line-height:1.6;max-width:155mm;margin-bottom:6mm;
-}
-.section-sub b{color:var(--text);font-weight:500;}
-.h1{
-  font-family:'DM Serif Display',Georgia,serif;
-  font-size:28pt;line-height:1.08;color:var(--primary);
-  letter-spacing:-.02em;margin-bottom:3.5mm;
-}
-.h1 i{font-style:italic;}
-.lede{font-size:10.5pt;line-height:1.5;color:var(--muted);max-width:158mm;}
-.lede b{color:var(--text);font-weight:500;}
+/* ---------- COMPARATEUR ---------- */
+.cmp{border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:16px}
+.cmp .hd{background:var(--navy);padding:10px 16px;display:flex;justify-content:space-between;align-items:center}
+.cmp .hd .a{color:#fff;font-size:11.5px;font-weight:700}
+.cmp .hd .b{color:rgba(255,255,255,.55);font-size:9.5px}
+table{width:100%;border-collapse:collapse;font-size:10px}
+th{background:#F1F5F9;color:var(--muted);font-size:8.5px;letter-spacing:.8px;text-transform:uppercase;
+  font-weight:700;padding:6px 9px;text-align:right}
+th:first-child{text-align:left}
+td{padding:5px 9px;border-bottom:1px solid var(--line);text-align:right}
+td:first-child{text-align:left;font-weight:600}
+tr.win{background:#EFF6FF}
+tr.win td{font-weight:700;color:var(--blue)}
+.bar{height:11px;background:#E2E8F0;border-radius:4px;overflow:hidden;min-width:70px}
+.bar i{display:block;height:100%;border-radius:4px;background:var(--navy-2)}
+tr.win .bar i{background:var(--blue)}
+.tag{font-size:8px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;padding:1px 6px;border-radius:20px;white-space:nowrap}
+.tg-ok{background:#EFF6FF;color:var(--blue)}
+.tg-md{background:#FFF7ED;color:#B45309}
+.tg-no{background:#FEF2F2;color:#B91C1C}
 
-/* ---------- cartes ---------- */
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:5mm;}
-.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5mm;}
-.card{border:1px solid var(--border);border-radius:3mm;padding:5mm;background:#fff;}
-.card .ico{
-  width:9mm;height:9mm;border-radius:2.2mm;background:rgba(46,204,138,.13);
-  display:flex;align-items:center;justify-content:center;margin-bottom:3.5mm;
-}
-.card .ico svg{width:5mm;height:5mm;stroke:var(--accent-dark);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;}
-.card .ico.b{background:rgba(59,130,246,.12);}
-.card .ico.b svg{stroke:var(--blue);}
-.card .ico.o{background:rgba(245,166,35,.14);}
-.card .ico.o svg{stroke:var(--orange);}
-.card .ico.p{background:rgba(139,92,246,.12);}
-.card .ico.p svg{stroke:var(--purple);}
-.card h4{font-size:10pt;font-weight:700;color:var(--primary);margin-bottom:1.8mm;letter-spacing:-.005em;}
-.card p{font-size:8.5pt;color:var(--muted);line-height:1.5;}
-.card p b{color:var(--text);font-weight:500;}
+.hit{background:var(--navy);border-radius:12px;padding:16px 20px;color:#fff;display:flex;gap:18px;align-items:center}
+.hit .n{font-family:'DM Serif Display',serif;font-size:30px;color:#7FB0FF;line-height:1;white-space:nowrap}
+.hit p{font-size:11.5px;color:rgba(255,255,255,.78);line-height:1.6}
+.hit p b{color:#fff}
 
-/* ---------- aperçu du document ---------- */
-.doc{border:1px solid var(--border);border-radius:3mm;overflow:hidden;margin-top:6mm;}
-.doc-top{
-  background:var(--primary);color:#fff;padding:3.5mm 6mm;
-  display:flex;justify-content:space-between;align-items:center;
-}
-.doc-top .t{font-family:'DM Serif Display',Georgia,serif;font-size:11.5pt;}
-.doc-top .b{
-  font-size:6.5pt;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);
-  border:1px solid rgba(46,204,138,.5);padding:1mm 2.5mm;border-radius:10mm;
-}
-.doc-body{background:var(--bg);padding:5.5mm 6mm 6mm;}
+/* ---------- ESTIMATEURS ---------- */
+.est{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:11px;
+  display:grid;grid-template-columns:1fr 1.15fr;gap:20px}
+.est.hl{border-color:var(--blue);background:var(--blue-soft)}
+.est .n{font-size:8.5px;font-weight:800;letter-spacing:1.6px;color:var(--blue);margin-bottom:5px}
+.est h3{font-size:17px;color:var(--navy);margin-bottom:6px}
+.est .d{font-size:11px;color:var(--muted);line-height:1.55;margin-bottom:9px}
+.est .tg{display:flex;flex-wrap:wrap;gap:4px}
+.est .tg span{font-size:8.5px;background:#fff;border:1px solid var(--line);color:var(--navy);border-radius:20px;padding:2px 8px;font-weight:600}
+.bn{display:flex;flex-direction:column;gap:9px}
+.bn .r{display:flex;gap:9px;align-items:flex-start}
+.bn .i{width:26px;height:26px;border-radius:8px;background:#fff;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bn .i svg{width:14px;height:14px}
+.bn b{display:block;font-size:10.5px;color:var(--ink);font-weight:700;margin-bottom:1px}
+.bn span{font-size:10px;color:var(--muted);line-height:1.5}
+.rb{display:inline-block;background:var(--blue);color:#fff;font-size:8px;font-weight:800;
+  letter-spacing:1.2px;padding:2px 9px;border-radius:20px;margin-bottom:7px}
 
-.scen{display:grid;grid-template-columns:1fr 1fr 1fr;gap:4mm;}
-.sc{background:#fff;border-radius:2.5mm;padding:3.5mm 4mm;border-top:2.5pt solid var(--border);}
-.sc.mid{border-top-color:var(--blue);}
-.sc.top{border-top-color:var(--accent);}
-.sc .n{font-size:7.5pt;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:2mm;}
-.sc.top .n{color:var(--accent-dark);}
-.sc .v{font-family:'DM Serif Display',Georgia,serif;font-size:16.5pt;color:var(--primary);line-height:1;}
-.sc .v small{font-family:'DM Sans',sans-serif;font-size:8pt;color:var(--muted);}
-.sc .d{margin-top:2.5mm;padding-top:2.2mm;border-top:1px solid var(--border);font-size:7.5pt;color:var(--muted);line-height:1.55;}
-.sc .d b{color:var(--text);font-weight:500;}
+/* ---------- COLONNES ---------- */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.blk{margin-bottom:16px}
+.blk h4{font-size:13px;color:var(--navy);margin-bottom:7px}
+.blk ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.blk li{display:flex;gap:7px;font-size:10.5px;color:var(--muted);line-height:1.5}
+.blk li svg{width:13px;height:13px;flex-shrink:0;margin-top:3px}
+.blk li b{color:var(--ink)}
+.note{background:var(--bg);border-left:3px solid var(--blue);border-radius:0 8px 8px 0;
+  padding:11px 14px;font-size:10.5px;color:var(--muted);line-height:1.6}
+.note b{color:var(--navy)}
 
-/* ---------- graphique mensuel ---------- */
-.chartbox{background:#fff;border-radius:2.5mm;padding:4.5mm 5mm 4mm;margin-top:4mm;}
-.chart-head{
-  display:flex;justify-content:space-between;align-items:baseline;
-  margin-bottom:4mm;padding-bottom:2.5mm;border-bottom:1px solid var(--border);
-}
-.chart-head .ct{font-size:8.5pt;font-weight:700;color:var(--primary);}
-.chart-head .cs{font-size:7.5pt;color:var(--muted);}
-.chart{display:flex;align-items:flex-end;gap:1.6mm;}
-.col{flex:1;display:flex;flex-direction:column;align-items:center;}
-.amt{font-size:6.2pt;color:var(--muted);font-weight:600;margin-bottom:1.2mm;white-space:nowrap;letter-spacing:-.02em;}
-.bar-wrap{height:26mm;width:100%;display:flex;align-items:flex-end;justify-content:center;}
-.bar{width:100%;border-radius:1mm 1mm 0 0;background:var(--steel);}
-.bar.mid{background:var(--blue);opacity:.75;}
-.bar.high{background:var(--accent);}
-.mth{font-size:6.8pt;color:var(--muted);margin-top:1.5mm;letter-spacing:.02em;}
-.col.peak .mth{color:var(--accent-dark);font-weight:700;}
-.legend{display:flex;gap:5mm;margin-top:3.5mm;padding-top:3mm;border-top:1px solid var(--border);}
-.lg{display:flex;align-items:center;gap:1.6mm;font-size:7pt;color:var(--muted);}
-.lg i{width:2.6mm;height:2.6mm;border-radius:.6mm;display:block;}
-.lg.h i{background:var(--accent);}
-.lg.m i{background:var(--blue);opacity:.75;}
-.lg.l i{background:var(--steel);}
-.lg .tot{margin-left:auto;color:var(--primary);font-weight:700;}
+/* ---------- TARIFS ---------- */
+.tarifs{width:100%;border-collapse:collapse;font-size:11px;margin-bottom:14px}
+.tarifs th{background:var(--navy);color:#fff;font-size:9px;padding:8px 10px}
+.tarifs td{padding:7px 10px}
+.tarifs tr.pop{background:var(--blue-soft)}
+.tarifs tr.pop td{font-weight:700;color:var(--blue)}
+.tarifs td.pr{font-family:'DM Serif Display',serif;font-size:14px;color:var(--navy)}
+.tarifs tr.pop td.pr{color:var(--blue)}
+.cta{background:var(--navy-deep);border-radius:12px;padding:22px 26px;text-align:center;color:#fff;margin-top:14px}
+.cta h3{font-size:24px;color:#fff;margin-bottom:8px}
+.cta h3 em{font-style:italic;color:#7FB0FF}
+.cta p{font-size:11.5px;color:rgba(255,255,255,.72)}
+.cta .u{display:inline-block;margin-top:12px;background:#fff;color:var(--navy);font-weight:700;
+  font-size:12.5px;padding:10px 22px;border-radius:9px;text-decoration:none}
+.mentions{font-size:8.5px;color:#94A3B8;line-height:1.55;margin-top:12px}
 
-.doc-note{
-  margin-top:4mm;font-size:8pt;color:var(--muted);line-height:1.55;
-  border-left:2pt solid var(--accent);padding-left:4mm;
-}
-.doc-note b{color:var(--primary);font-weight:600;}
+.noprint{max-width:210mm;margin:16px auto;text-align:center}
+.noprint button{background:var(--blue);color:#fff;border:none;border-radius:9px;padding:11px 24px;
+  font-size:13px;font-weight:700;font-family:inherit;cursor:pointer}
+.noprint p{font-size:11.5px;color:var(--muted);margin-top:8px}
 
-/* ---------- étapes ---------- */
-.steps{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:5mm;margin-top:auto;padding:6mm 0 7mm;}
-.st .n{font-family:'DM Serif Display',Georgia,serif;font-size:11.5pt;color:var(--accent);line-height:1;margin-bottom:1.8mm;}
-.st h5{font-size:8.5pt;font-weight:700;color:var(--primary);margin-bottom:1mm;}
-.st p{font-size:7.5pt;color:var(--muted);line-height:1.45;}
-
-/* ---------- listes ---------- */
-.crit{list-style:none;}
-.crit li{font-size:8.5pt;color:var(--muted);line-height:1.45;padding:0 0 2.6mm 5mm;position:relative;}
-.crit li::before{content:"";position:absolute;left:0;top:1.5mm;width:2mm;height:2mm;border-radius:50%;background:var(--accent);}
-.crit b{color:var(--primary);font-weight:600;}
-
-.pills{display:flex;flex-wrap:wrap;gap:1.8mm;margin-top:3mm;}
-.pill{font-size:7.5pt;color:var(--primary);border:1px solid var(--border);border-radius:10mm;padding:1.2mm 3mm;background:#fff;white-space:nowrap;}
-.pill.on{background:rgba(46,204,138,.14);border-color:rgba(46,204,138,.5);color:var(--accent-dark);font-weight:600;}
-
-.panel{background:var(--bg);border-radius:3mm;padding:5mm 6mm;}
-.panel h4{font-size:10pt;font-weight:700;color:var(--primary);margin-bottom:2.5mm;}
-.mini{font-size:7.5pt;color:var(--muted);margin-top:2.5mm;line-height:1.5;}
-
-/* ---------- tarifs ---------- */
-.pricing{width:100%;border-collapse:collapse;}
-.pricing th{
-  text-align:left;font-size:7pt;letter-spacing:.16em;text-transform:uppercase;
-  color:var(--muted);font-weight:600;padding:0 3mm 2.2mm 0;border-bottom:1.2pt solid var(--primary);
-}
-.pricing td{padding:2.8mm 3mm 2.8mm 0;border-bottom:1px solid var(--border);font-size:9pt;vertical-align:baseline;}
-.pricing .pl{font-weight:700;color:var(--primary);white-space:nowrap;}
-.pricing .pr{font-family:'DM Serif Display',Georgia,serif;font-size:12pt;color:var(--primary);white-space:nowrap;}
-.pricing .nt{color:var(--muted);font-size:8.5pt;}
-.pricing tr.hi td{background:rgba(46,204,138,.10);}
-.pricing tr:last-child td{border-bottom:none;}
-
-.highlight{
-  border:1px solid rgba(46,204,138,.45);background:rgba(46,204,138,.08);
-  border-radius:3mm;padding:4.5mm 5.5mm;margin-bottom:5mm;
-}
-.highlight .q{font-family:'DM Serif Display',Georgia,serif;font-size:13pt;color:var(--primary);line-height:1.25;margin-bottom:1.5mm;}
-.highlight p{font-size:8.5pt;color:var(--muted);line-height:1.5;}
-
-.cta{
-  background:var(--primary);color:#fff;border-radius:3mm;padding:7mm 8mm;
-  display:flex;justify-content:space-between;align-items:flex-end;gap:8mm;
-  margin-top:auto;margin-bottom:6mm;
-}
-.cta .big{font-family:'DM Serif Display',Georgia,serif;font-size:16pt;line-height:1.18;margin-bottom:2mm;}
-.cta .sm{font-size:8.5pt;color:#A9C0D8;}
-.cta .sm b{color:var(--accent);font-weight:600;}
-.cta .ct{text-align:right;font-size:8.5pt;line-height:1.8;color:#C6D6E8;white-space:nowrap;}
-.cta .ct .u{color:#fff;font-weight:700;font-size:10.5pt;}
-.legal{font-size:6.5pt;color:#9AA6B4;line-height:1.5;padding-bottom:5mm;}
-
-/* ---------- impression ---------- */
-@page{size:A4 portrait;margin:0;}
 @media print{
-  html{background:none;}
-  .sheet{margin:0;box-shadow:none;page-break-after:always;break-after:page;}
-  .sheet:last-of-type{page-break-after:auto;break-after:auto;}
-  *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
-  .noprint{display:none !important;}
-  .contactzone{display:none !important;}
-}
-
-/* ---------- zone de contact (écran uniquement) ---------- */
-.contactzone{
-  width:210mm;margin:0 auto 14mm;background:#fff;
-  box-shadow:0 6px 28px rgba(15,52,96,.28);
-}
-.cz-inner{padding:11mm 15mm 12mm;}
-.cz-title{
-  font-family:'DM Serif Display',Georgia,serif;
-  font-size:20pt;line-height:1.15;color:var(--primary);
-  letter-spacing:-.01em;margin-bottom:3mm;
-}
-.cz-sub{font-size:9.5pt;color:var(--muted);line-height:1.6;margin-bottom:7mm;max-width:140mm;}
-.cz-sub a{color:var(--accent-dark);font-weight:600;text-decoration:none;border-bottom:1px solid rgba(46,204,138,.5);}
-.cz-row{display:grid;grid-template-columns:1fr 1fr;gap:5mm;margin-bottom:4.5mm;}
-.cz-form label{display:block;}
-.cz-form label.cz-full{margin-bottom:5mm;}
-.cz-form span{
-  display:block;font-size:7.5pt;font-weight:600;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--muted);margin-bottom:1.8mm;
-}
-.cz-form input[type=text],
-.cz-form input[type=email],
-.cz-form input[type=tel],
-.cz-form textarea{
-  width:100%;font-family:inherit;font-size:10pt;color:var(--text);
-  border:1px solid var(--border);border-radius:2mm;
-  padding:3mm 3.5mm;background:#fff;outline:none;
-  transition:border-color .15s,box-shadow .15s;
-}
-.cz-form input:focus,.cz-form textarea:focus{
-  border-color:var(--accent);box-shadow:0 0 0 3px rgba(46,204,138,.18);
-}
-.cz-form textarea{resize:vertical;line-height:1.55;}
-.cz-form button{
-  font-family:inherit;font-size:10.5pt;font-weight:700;color:#fff;
-  background:var(--accent);border:none;border-radius:2mm;
-  padding:4mm 10mm;cursor:pointer;letter-spacing:.01em;
-  transition:background .15s;
-}
-.cz-form button:hover{background:var(--accent-dark);}
-.cz-legal{font-size:7.5pt;color:var(--muted);margin-top:4mm;line-height:1.5;}
-.cz-legal a{color:var(--muted);}
-.cz-alt{
-  margin-top:8mm;padding-top:5mm;border-top:1px solid var(--border);
-  font-size:9pt;color:var(--muted);
-}
-.cz-alt a{color:var(--primary);font-weight:600;text-decoration:none;}
-
-@media screen and (max-width:220mm){
-  .contactzone{width:auto;margin:0 4mm 8mm;}
-  .cz-inner{padding:8mm 6mm 9mm;}
-  .cz-row{grid-template-columns:1fr;gap:4.5mm;}
+  body{background:#fff}
+  .noprint{display:none}
+  .page{box-shadow:none;margin:0;width:auto;min-height:0;padding:0;page-break-after:always}
+  .page:last-child{page-break-after:auto}
+  @page{size:A4 portrait;margin:14mm}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  tr,td,th{page-break-inside:avoid!important}
+  .est,.cmp,.hit,.cta{page-break-inside:avoid!important}
 }
 </style>
 </head>
 <body>
 
+<svg style="display:none" aria-hidden="true">
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m4 12.5 5 5L20 6.5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6"/><path d="m9 14.5-1 7 4-2.5 4 2.5-1-7"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h14V9.5"/><path d="M10 20v-6h4v6"/></symbol>
+  <symbol id="i-scale" viewBox="0 0 24 24"><path d="M12 3v18M7 21h10M3 8l4-3 4 3M3 8l2 5h4l2-5M13 8l4-3 4 3M13 8l2 5h4l2-5"/></symbol>
+  <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5.9 1.2.9 1.9V16h5.2v-.2c0-.7.3-1.4.9-1.9A6 6 0 0 0 12 3Z"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M18 5l2 2M15 8l2 2"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8Z"/></symbol>
+  <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/></symbol>
+  <symbol id="i-trophy" viewBox="0 0 24 24"><path d="M7 4h10v5a5 5 0 0 1-10 0V4Z"/><path d="M7 6H4v1a3 3 0 0 0 3 3M17 6h3v1a3 3 0 0 1-3 3"/><path d="M10 14v3h4v-3M8 21h8"/></symbol>
+  <symbol id="i-palette" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18c1 0 1.7-.8 1.7-1.7 0-.5-.2-.9-.5-1.2-.3-.3-.5-.7-.5-1.1 0-1 .8-1.7 1.7-1.7H16a5 5 0 0 0 5-5c0-3.9-4-7.3-9-7.3Z"/><circle cx="7.5" cy="11.5" r="1.1"/><circle cx="10.5" cy="7.5" r="1.1"/><circle cx="15" cy="8.5" r="1.1"/></symbol>
+  <symbol id="i-pencil" viewBox="0 0 24 24"><path d="M4 20h4L20 8l-4-4L4 16v4Z"/><path d="m14 6 4 4"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16.5 5.2a3.5 3.5 0 0 1 0 6.6M17.5 14.5A6 6 0 0 1 21 20"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 3 2.5 15 0 18M12 3c-2.5 3-2.5 15 0 18"/></symbol>
+</svg>
 
-<!-- ═══════════════════ PAGE 1 ═══════════════════ -->
-<section class="sheet">
-  <div class="brandbar">
-    <div class="logo">WeRenT<span>Max</span></div>
-    <div class="right">Estimation locative — courte durée</div>
+<div class="noprint">
+  <button onclick="window.print()">Télécharger la plaquette en PDF</button>
+  <p>Dans la fenêtre d'impression : « Enregistrer au format PDF », décochez les en-têtes et pieds de page, cochez les graphiques d'arrière-plan.</p>
+</div>
+
+<!-- ═══════════ PAGE 1 ═══════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="lg">WeRenT<span>Max</span></div>
+    <div class="sec">Estimation locative · Tous modes d'exploitation</div>
   </div>
 
-  <div class="inner">
-    <div style="padding-top:8mm">
-      <div class="section-label">L'outil des professionnels de la location courte durée</div>
-      <div class="h1">Le propriétaire hésite.<br>Posez les chiffres <i>sur la table.</i></div>
-      <p class="lede">
-        Un propriétaire ne signe pas sur une promesse de rendement : il signe quand il voit ce que
-        son bien peut rapporter, <b>mois par mois</b>. WeRenTMax produit ce document en trois minutes,
-        à votre logo et à vos couleurs.
-      </p>
-    </div>
+  <span class="eyebrow">L'outil des professionnels de la location</span>
+  <h2 class="t">Le propriétaire hésite.<br>Posez les chiffres <em>sur la table.</em></h2>
+  <p class="lead">
+    Un propriétaire ne signe pas sur une promesse de rendement. Il signe quand il voit ce que son
+    bien peut rapporter <b>selon chaque mode d'exploitation</b>, mois par mois, chiffres à l'appui.
+    WeRenTMax produit ce document en trois minutes, à votre logo et à vos couleurs.
+  </p>
 
-    <div class="doc">
-      <div class="doc-top">
-        <div class="t">Projection de revenus annuels</div>
-        <div class="b">Aperçu du rapport</div>
-      </div>
-
-      <div class="doc-body">
-        <div class="scen">
-          <div class="sc">
-            <div class="n">Phase de lancement</div>
-            <div class="v">11 096 €<small> / an</small></div>
-            <div class="d">ADR <b>76 €</b> · Occupation <b>40 %</b><br>925 € par mois en moyenne</div>
-          </div>
-          <div class="sc mid">
-            <div class="n">Régime de croisière</div>
-            <div class="v">17 338 €<small> / an</small></div>
-            <div class="d">ADR <b>95 €</b> · Occupation <b>50 %</b><br>1 445 € par mois en moyenne</div>
-          </div>
-          <div class="sc top">
-            <div class="n">Top 10 % du marché</div>
-            <div class="v">21 079 €<small> / an</small></div>
-            <div class="d">ADR <b>105 €</b> · Occupation <b>55 %</b><br>1 757 € par mois en moyenne</div>
-          </div>
-        </div>
-
-        <div class="chartbox">
-          <div class="chart-head">
-            <div class="ct">Revenus mensuels estimés</div>
-            <div class="cs">Scénario Régime de croisière — Appartement 2 pers., Agde (34)</div>
-          </div>
-
-          <div class="chart">
-            <div class="col"><div class="amt">544 €</div><div class="bar-wrap"><div class="bar" style="height:4.5mm"></div></div><div class="mth">Jan</div></div>
-            <div class="col"><div class="amt">622 €</div><div class="bar-wrap"><div class="bar" style="height:5.2mm"></div></div><div class="mth">Fév</div></div>
-            <div class="col"><div class="amt">855 €</div><div class="bar-wrap"><div class="bar" style="height:7.1mm"></div></div><div class="mth">Mar</div></div>
-            <div class="col"><div class="amt">1 166 €</div><div class="bar-wrap"><div class="bar mid" style="height:9.7mm"></div></div><div class="mth">Avr</div></div>
-            <div class="col"><div class="amt">1 555 €</div><div class="bar-wrap"><div class="bar mid" style="height:13mm"></div></div><div class="mth">Mai</div></div>
-            <div class="col peak"><div class="amt">2 177 €</div><div class="bar-wrap"><div class="bar high" style="height:18.2mm"></div></div><div class="mth">Juin</div></div>
-            <div class="col peak"><div class="amt">3 032 €</div><div class="bar-wrap"><div class="bar high" style="height:25.3mm"></div></div><div class="mth">Juil</div></div>
-            <div class="col peak"><div class="amt">3 110 €</div><div class="bar-wrap"><div class="bar high" style="height:26mm"></div></div><div class="mth">Août</div></div>
-            <div class="col"><div class="amt">1 866 €</div><div class="bar-wrap"><div class="bar mid" style="height:15.6mm"></div></div><div class="mth">Sep</div></div>
-            <div class="col"><div class="amt">1 088 €</div><div class="bar-wrap"><div class="bar mid" style="height:9.1mm"></div></div><div class="mth">Oct</div></div>
-            <div class="col"><div class="amt">622 €</div><div class="bar-wrap"><div class="bar" style="height:5.2mm"></div></div><div class="mth">Nov</div></div>
-            <div class="col"><div class="amt">700 €</div><div class="bar-wrap"><div class="bar" style="height:5.9mm"></div></div><div class="mth">Déc</div></div>
-          </div>
-
-          <div class="legend">
-            <span class="lg h"><i></i>Haute saison</span>
-            <span class="lg m"><i></i>Moyenne saison</span>
-            <span class="lg l"><i></i>Basse saison</span>
-            <span class="lg tot">Total annuel 17 337 €</span>
-          </div>
-        </div>
-
-        <div class="doc-note">
-          <b>Pourquoi ce graphique change la conversation.</b> Le propriétaire arrête de raisonner en
-          moyenne annuelle et voit son année réelle : les trois mois qui portent la moitié du chiffre
-          d'affaires, et ceux qu'il faut aller chercher. Vous ne défendez plus un chiffre, vous fixez
-          des objectifs avec lui — remplir avril à juin, tenir le tarif sur les semaines de pointe.
-          Et l'année suivante, ce même graphique devient la référence sur laquelle vous mesurez le
-          travail accompli.
-        </div>
+  <div class="modes">
+    <div class="mg">
+      <div class="lb">Location courte durée</div>
+      <div class="chips">
+        <span class="chip"><i style="background:#FF5A5F">A</i>Airbnb</span>
+        <span class="chip"><i style="background:#003580">B</i>Booking.com</span>
+        <span class="chip"><i style="background:#1E3A5F">Ab</i>Abritel</span>
+        <span class="chip"><i style="background:#FFC900;color:#0F172A">E</i>Expedia</span>
+        <span class="chip"><i style="background:#2563EB">&#8599;</i>Réservation directe</span>
       </div>
     </div>
-
-    <div class="steps">
-      <div class="st">
-        <div class="n">01</div>
-        <h5>Vous décrivez le bien</h5>
-        <p>Adresse auto-complétée, type, capacité, standing, équipements premium.</p>
+    <div class="mg">
+      <div class="lb">Moyenne &amp; longue durée</div>
+      <div class="chips">
+        <span class="chip"><i style="background:#6D4AC4">C</i>Colocation étudiante</span>
+        <span class="chip"><i style="background:#2563EB">É</i>Bail étudiant 9 mois</span>
+        <span class="chip"><i style="background:#0EA5E9">M</i>Bail mobilité</span>
+        <span class="chip"><i style="background:#1E3A5F">Me</i>Meublé classique</span>
+        <span class="chip"><i style="background:#64748B">N</i>Location nue</span>
       </div>
-      <div class="st">
-        <div class="n">02</div>
-        <h5>L'IA analyse le marché</h5>
-        <p>Recherche en direct : nuitées pratiquées, saisonnalité, dynamique touristique.</p>
-      </div>
-      <div class="st">
-        <div class="n">03</div>
-        <h5>Vous ajustez</h5>
-        <p>Chaque chiffre et chaque texte restent modifiables, avec recalcul immédiat.</p>
-      </div>
-      <div class="st">
-        <div class="n">04</div>
-        <h5>Vous remettez le rapport</h5>
-        <p>PDF de quatre pages à votre marque, signé par le conseiller.</p>
+    </div>
+    <div class="mg">
+      <div class="lb">Et le montage que personne d'autre ne chiffre</div>
+      <div class="chips">
+        <span class="chip hl"><i style="background:#2563EB">&#8646;</i>Gestion mixte · bail 9 mois + 3 mois de haute saison</span>
       </div>
     </div>
   </div>
 
-  <div class="pagefoot"><span>werentmax.com</span><span>1 / 4</span></div>
-</section>
-
-<!-- ═══════════════════ PAGE 2 ═══════════════════ -->
-<section class="sheet">
-  <div class="brandbar">
-    <div class="logo">WeRenT<span>Max</span></div>
-    <div class="right">Critères de génération</div>
-  </div>
-
-  <div class="inner">
-    <div style="padding-top:8mm">
-      <div class="section-label">Ce que vous renseignez</div>
-      <div class="section-title">Une estimation qui colle au bien,<br>pas une moyenne de quartier.</div>
-      <p class="section-sub">
-        Deux appartements dans la même rue ne se louent pas au même prix. Le formulaire capte ce qui
-        fait réellement la différence de tarif à la nuitée — <b>et chaque critère pèse dans le calcul</b>.
-      </p>
+  <div class="cmp">
+    <div class="hd">
+      <div>
+        <div class="a">Comparateur · Appartement T4 · 82 m² · 3 chambres</div>
+        <div class="b">Montpellier, quartier universitaire — extrait d'un rapport réel</div>
+      </div>
+      <div class="b">Revenu annuel brut propriétaire</div>
     </div>
-
-    <div class="grid2" style="margin-bottom:5mm">
-      <div class="card">
-        <div class="ico b"><svg viewBox="0 0 24 24"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
-        <h4>Localisation</h4>
-        <ul class="crit">
-          <li><b>Adresse exacte</b>, saisie avec auto-complétion — pas seulement la ville</li>
-          <li><b>Pays détecté automatiquement</b> : 14 pays référencés, chacun avec ses repères de marché</li>
-          <li>Le marché local est analysé à l'échelle du quartier quand la donnée existe</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1z"/><path d="M9 21v-7h6v7"/></svg></div>
-        <h4>Caractéristiques du logement</h4>
-        <ul class="crit">
-          <li><b>Type de bien</b> — studio, appartement, maison, villa</li>
-          <li><b>Nombre de chambres</b> et <b>de salles de bain</b></li>
-          <li><b>Capacité d'accueil</b> en nombre de voyageurs</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="grid2" style="margin-bottom:5mm">
-      <div class="card">
-        <div class="ico o"><svg viewBox="0 0 24 24"><path d="m12 3 2.6 5.7 6.4.8-4.7 4.3 1.2 6.2L12 17l-5.5 3 1.2-6.2L3 9.5l6.4-.8z"/></svg></div>
-        <h4>Standing</h4>
-        <p>Quatre niveaux, qui déplacent directement le positionnement tarifaire du bien.</p>
-        <div class="pills">
-          <span class="pill">Budget</span>
-          <span class="pill">Standard</span>
-          <span class="pill on">Premium</span>
-          <span class="pill">Luxe</span>
-        </div>
-      </div>
-      <div class="card">
-        <div class="ico p"><svg viewBox="0 0 24 24"><path d="M20.8 11.3 12.7 3.2A2 2 0 0 0 11.3 2.6H5a2 2 0 0 0-2 2v6.3a2 2 0 0 0 .6 1.4l8.1 8.1a2 2 0 0 0 2.8 0l6.3-6.3a2 2 0 0 0 0-2.8z"/><circle cx="7.5" cy="7.5" r="1.2"/></svg></div>
-        <h4>Équipements premium</h4>
-        <p>Chaque atout coché relève le tarif à la nuitée retenu par le modèle.</p>
-        <div class="pills">
-          <span class="pill on">Climatisation</span>
-          <span class="pill">Parking</span>
-          <span class="pill on">Piscine</span>
-          <span class="pill">Jacuzzi</span>
-          <span class="pill on">Front de mer</span>
-          <span class="pill">Vue mer</span>
-          <span class="pill">Vue d'exception</span>
-          <span class="pill">Borne de recharge</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="grid2" style="margin-bottom:5mm">
-      <div class="card">
-        <div class="ico b"><svg viewBox="0 0 24 24"><path d="M4 4h16v13H8l-4 4z"/><path d="M8 9h8M8 13h5"/></svg></div>
-        <h4>Un rapport nominatif</h4>
-        <p>Le document porte le nom du propriétaire et l'adresse de son bien : il reçoit une étude faite pour lui, pas une brochure générique.</p>
-        <ul class="crit" style="margin-top:3mm">
-          <li><b>Prénom et nom du propriétaire</b> repris en tête de rapport</li>
-          <li><b>Adresse du bien</b> affichée sur le document</li>
-          <li><b>Téléphone et email</b> conservés pour la relance</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="ico o"><svg viewBox="0 0 24 24"><path d="M3 18 9 12l4 4 8-8"/><path d="M21 8v5h-5"/><path d="M3 21h18"/></svg></div>
-        <h4>Annotez, suivez, progressez</h4>
-        <p>Chaque estimation devient une fiche de suivi. En mesurant ce qui aboutit, vous voyez où vous perdez les mandats — et vous ajustez, seul ou avec votre équipe.</p>
-        <ul class="crit" style="margin-top:3mm">
-          <li><b>Notes internes</b> sur chaque étude : objections, contexte, suites à donner. Jamais imprimées sur le rapport remis au propriétaire.</li>
-          <li><b>Statut prospect ou client</b>, basculé en un clic à la signature</li>
-          <li><b>Taux de conversion calculé automatiquement</b> — le vôtre, et celui de chaque conseiller</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="panel">
-      <h4>Ce que l'IA va chercher pendant ce temps</h4>
-      <p style="font-size:8.5pt;color:var(--muted);line-height:1.55">
-        Le moteur interroge le web en direct et ne retient que des chiffres datés : niveau des nuitées
-        pratiquées sur le secteur, taux d'occupation constatés, fréquentation touristique, événements
-        et pics de saison, tension entre l'offre et la demande. Les résultats sont bornés par des
-        garde-fous, pour qu'aucune estimation ne sorte une valeur invraisemblable.
-      </p>
-    </div>
-  </div>
-
-  <div class="pagefoot"><span>werentmax.com</span><span>2 / 4</span></div>
-</section>
-
-<!-- ═══════════════════ PAGE 3 ═══════════════════ -->
-<section class="sheet">
-  <div class="brandbar">
-    <div class="logo">WeRenT<span>Max</span></div>
-    <div class="right">Personnalisation du rapport</div>
-  </div>
-
-  <div class="inner">
-    <div style="padding-top:8mm">
-      <div class="section-label">Ce que vous ajustez</div>
-      <div class="section-title">L'IA propose.<br>Vous gardez la main sur tout.</div>
-      <p class="section-sub">
-        Vous connaissez votre marché mieux que n'importe quel modèle. <b>Chaque chiffre et chaque
-        paragraphe du rapport reste modifiable</b> — et toute correction recalcule instantanément les
-        scénarios, le graphique mensuel et le tableau des revenus.
-      </p>
-    </div>
-
-    <div class="grid2" style="margin-bottom:5mm">
-      <div class="card">
-        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 17V9M9 17V5M15 17v-6M21 17V7"/><path d="M3 21h18"/></svg></div>
-        <h4>Tarifs, occupation, saisonnalité</h4>
-        <ul class="crit">
-          <li><b>ADR ajustable</b> scénario par scénario, directement dans le rapport</li>
-          <li><b>Taux d'occupation</b> modifiable de la même façon</li>
-          <li><b>Saison de chaque mois</b> réglable d'un clic — haute (×2), moyenne (×1) ou basse (×0,35)</li>
-          <li>Les trois scénarios, le graphique et le tableau se recalculent aussitôt</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="ico b"><svg viewBox="0 0 24 24"><path d="M4 19.5V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v13.5"/><path d="M4 19.5A1.5 1.5 0 0 0 5.5 21H20"/><path d="M8 8h8M8 12h8M8 16h4"/></svg></div>
-        <h4>Tous les textes du rapport</h4>
-        <ul class="crit">
-          <li><b>Analyse du marché local</b> rédigée par l'IA, puis réécrite par vous si besoin</li>
-          <li><b>Commentaire sous chaque scénario</b> — l'argumentaire qui accompagne le chiffre</li>
-          <li><b>Stratégie de lancement</b> en trois phases : mois 1 à 5, 5 à 10, puis au-delà</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="grid2" style="margin-bottom:5mm">
-      <div class="card">
-        <div class="ico p"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M9 10v10"/></svg></div>
-        <h4>Les indicateurs du métier</h4>
-        <ul class="crit">
-          <li><b>ADR</b> — le tarif moyen par nuit retenu</li>
-          <li><b>Taux d'occupation</b> constaté sur le marché local</li>
-          <li><b>RevPAR</b> calculé automatiquement, ADR × occupation</li>
-          <li>Vous parlez le langage du revenue management, pas celui d'un tableur</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="ico o"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/><path d="M12 8v4.5l3 1.8"/></svg></div>
-        <h4>Vos estimations restent vivantes</h4>
-        <ul class="crit">
-          <li>Chaque étude est <b>enregistrée</b> et se rouvre en un clic</li>
-          <li><b>Modifiable et ré-exportable</b> — utile pour la relance six mois plus tard</li>
-          <li>Le statut passe de <b>prospect à client</b> et alimente vos statistiques</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="panel">
-      <h4>Le rapport livré : quatre pages</h4>
-      <div class="grid2" style="gap:8mm">
-        <ul class="crit">
-          <li><b>Page 1</b> — en-tête à votre marque, caractéristiques du bien, bandeau d'indicateurs, analyse du marché local et tendances</li>
-          <li><b>Page 2</b> — les trois scénarios de revenus et la stratégie de lancement en trois phases</li>
-        </ul>
-        <ul class="crit">
-          <li><b>Page 3</b> — saisonnalité mois par mois et graphique comparant les trois scénarios</li>
-          <li><b>Page 4</b> — tableau détaillé des revenus mensuels, total annuel, mentions et coordonnées du conseiller</li>
-        </ul>
-      </div>
-      <div class="mini">Export en un clic, prêt à envoyer ou à imprimer.</div>
-    </div>
-  </div>
-
-  <div class="pagefoot"><span>werentmax.com</span><span>3 / 4</span></div>
-</section>
-
-<!-- ═══════════════════ PAGE 4 ═══════════════════ -->
-<section class="sheet">
-  <div class="brandbar">
-    <div class="logo">WeRenT<span>Max</span></div>
-    <div class="right">Marque blanche · Équipe · Tarifs</div>
-  </div>
-
-  <div class="inner">
-    <div style="padding-top:8mm">
-      <div class="section-label">Marque blanche</div>
-      <div class="section-title">C'est votre document.<br>Notre nom n'y figure pas.</div>
-    </div>
-
-    <div class="grid3" style="margin-bottom:6mm">
-      <div class="card">
-        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="9" cy="9" r="2"/><path d="m3 17 5-4 4 3 3-2 6 5"/></svg></div>
-        <h4>Votre identité</h4>
-        <ul class="crit">
-          <li><b>Logo</b> de l'agence</li>
-          <li><b>Couleur principale</b> et <b>couleur d'accent</b></li>
-          <li>Nom, adresse, téléphone, email, site web</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="ico b"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4.5 21a7.5 7.5 0 0 1 15 0"/></svg></div>
-        <h4>Votre conseiller</h4>
-        <ul class="crit">
-          <li><b>Photo</b>, prénom et nom</li>
-          <li><b>Téléphone</b> et <b>email directs</b></li>
-          <li>Chacun signe ses propres rapports</li>
-        </ul>
-      </div>
-      <div class="card">
-        <div class="ico p"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></div>
-        <h4>Votre équipe</h4>
-        <ul class="crit">
-          <li><b>Invitation</b> des conseillers par lien</li>
-          <li><b>Quota attribué</b> à chacun</li>
-          <li>Le manager suit toute l'activité</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="section-label">Formules</div>
-    <table class="pricing" style="margin-bottom:4mm">
-      <thead>
-        <tr><th style="width:27mm">Formule</th><th style="width:29mm">Prix</th><th style="width:34mm">Inclus</th><th>Au-delà du quota</th></tr>
-      </thead>
+    <table>
+      <thead><tr><th>Stratégie</th><th></th><th>Revenu estimé</th><th>Mois</th><th>Gestion</th><th>Vacance</th></tr></thead>
       <tbody>
-        <tr><td class="pl">Découverte</td><td class="pr">Gratuit</td><td>3 estimations</td><td class="nt">Pour essayer sans engagement</td></tr>
-        <tr><td class="pl">À l'unité</td><td class="pr">19,90 €</td><td>1 estimation</td><td class="nt">Sans abonnement, valable 12 mois</td></tr>
-        <tr class="hi"><td class="pl">Solo</td><td class="pr">29,90 €<span class="nt"> /mois</span></td><td>10 par mois</td><td class="nt">4,90 € l'estimation supplémentaire</td></tr>
-        <tr><td class="pl">Pro</td><td class="pr">59,90 €<span class="nt"> /mois</span></td><td>25 par mois</td><td class="nt">3,90 € l'estimation supplémentaire</td></tr>
-        <tr><td class="pl">Business</td><td class="pr">129,90 €<span class="nt"> /mois</span></td><td>70 par mois</td><td class="nt">2,90 € l'estimation supplémentaire</td></tr>
-        <tr><td class="pl">Réseau</td><td class="pr">Sur devis</td><td>Volume négocié</td><td class="nt">Franchises et multi-agences</td></tr>
+        <tr class="win"><td>Gestion mixte</td><td><div class="bar"><i style="width:100%"></i></div></td><td>21 330 €<br><span style="font-size:8.5px;color:#94A3B8">1 778 € / mois</span></td><td>12</td><td><span class="tag tg-md">Élevée</span></td><td><span class="tag tg-ok">Faible</span></td></tr>
+        <tr><td>Location saisonnière</td><td><div class="bar"><i style="width:97%"></i></div></td><td>20 680 €<br><span style="font-size:8.5px;color:#94A3B8">1 723 € / mois</span></td><td>12</td><td><span class="tag tg-no">Très élevée</span></td><td><span class="tag tg-no">Fort</span></td></tr>
+        <tr><td>Colocation étudiante</td><td><div class="bar"><i style="width:75%"></i></div></td><td>15 970 €<br><span style="font-size:8.5px;color:#94A3B8">1 389 € / mois</span></td><td>11,5</td><td><span class="tag tg-md">Moyenne</span></td><td><span class="tag tg-ok">Faible</span></td></tr>
+        <tr><td>Meublé classique</td><td><div class="bar"><i style="width:62%"></i></div></td><td>13 280 €<br><span style="font-size:8.5px;color:#94A3B8">1 207 € / mois</span></td><td>11</td><td><span class="tag tg-ok">Faible</span></td><td><span class="tag tg-ok">Faible</span></td></tr>
+        <tr><td>Bail mobilité</td><td><div class="bar"><i style="width:62%"></i></div></td><td>13 270 €<br><span style="font-size:8.5px;color:#94A3B8">1 327 € / mois</span></td><td>10</td><td><span class="tag tg-md">Moyenne</span></td><td><span class="tag tg-md">Modéré</span></td></tr>
+        <tr><td>Location nue</td><td><div class="bar"><i style="width:53%"></i></div></td><td>11 380 €<br><span style="font-size:8.5px;color:#94A3B8">989 € / mois</span></td><td>11,5</td><td><span class="tag tg-ok">Très faible</span></td><td><span class="tag tg-ok">Faible</span></td></tr>
+        <tr><td>Bail étudiant 9 mois</td><td><div class="bar"><i style="width:53%"></i></div></td><td>11 300 €<br><span style="font-size:8.5px;color:#94A3B8">1 256 € / mois</span></td><td>9</td><td><span class="tag tg-ok">Faible</span></td><td><span class="tag tg-md">Modéré</span></td></tr>
       </tbody>
     </table>
-    <p class="mini" style="margin-bottom:5mm">
-      <b style="color:var(--primary)">Conseiller supplémentaire : 6,99 € par mois.</b>
-      Aucune estimation n'est facturée au-delà de votre quota sans votre accord explicite.
-    </p>
+  </div>
 
-    <div class="highlight">
-      <div class="q">En formule Solo, une estimation vous revient à 2,99 €.</div>
-      <p>
-        Un seul mandat signé dans l'année couvre l'abonnement plusieurs dizaines de fois. La vraie
-        question n'est pas de savoir si l'outil est rentable, mais combien de rendez-vous vous perdez
-        aujourd'hui faute d'arriver avec un document.
-      </p>
+  <div class="hit">
+    <span class="n">10 030 €</span>
+    <p>d'écart annuel entre la meilleure et la moins bonne stratégie, <b>sur le même bien</b>.
+      C'est la conversation que vous n'aviez pas les moyens d'avoir avec un propriétaire —
+      et celle qui fait signer un mandat.</p>
+  </div>
+
+  <div class="pf"><span>werentmax.com</span><span>1 / 4</span></div>
+</div>
+
+<!-- ═══════════ PAGE 2 ═══════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="lg">WeRenT<span>Max</span></div>
+    <div class="sec">Les quatre estimateurs</div>
+  </div>
+
+  <span class="eyebrow">Une réponse pour chaque situation</span>
+  <h2 class="t">Quatre outils, une seule promesse&nbsp;: <em>signer plus vite.</em></h2>
+  <p class="lead">Chaque estimateur répond à une question que votre client se pose déjà — et vous
+    donne la réponse chiffrée avant vos concurrents.</p>
+
+  <div class="est">
+    <div>
+      <div class="n">ESTIMATEUR 01</div>
+      <h3>Courte durée</h3>
+      <p class="d">« Combien ça rapporte en saisonnier&nbsp;? » Prix moyen par nuit, taux d'occupation,
+        saisonnalité mois par mois et trois scénarios de montée en puissance.</p>
+      <div class="tg"><span>Saisonnier</span><span>Tourisme d'affaires</span></div>
     </div>
-
-    <div class="cta">
-      <div>
-        <div class="big">Vos trois premières<br>estimations sont offertes.</div>
-        <div class="sm">Créez votre compte sur <b>werentmax.com</b> — sans engagement, résiliable à tout moment.</div>
-      </div>
-      <div class="ct">
-        <div class="u">werentmax.com</div>
-        contact@werentmax.com<br>
-        Formulaire de contact sur le site
-      </div>
-    </div>
-
-    <div class="legal">
-      WeRenTMax est édité par Holihost LLC — Albuquerque, Nouveau-Mexique, États-Unis.
-      Les montants figurant dans ce document sont donnés à titre d'exemple et ne constituent pas une
-      garantie de revenus. Prix TTC en euros. Conditions générales sur werentmax.com/cgv.html
+    <div class="bn">
+      <div class="r"><div class="i"><svg class="ic"><use href="#i-chart"/></svg></div><div>
+        <b>Un discours crédible dès le premier rendez-vous</b>
+        <span>Trois scénarios plutôt qu'un chiffre unique : le propriétaire comprend que vous connaissez le métier.</span></div></div>
+      <div class="r"><div class="i"><svg class="ic"><use href="#i-calendar"/></svg></div><div>
+        <b>La saisonnalité rendue visible</b>
+        <span>Le propriétaire voit les trois mois qui portent la moitié du chiffre, et ceux qu'il faut aller chercher.</span></div></div>
+      <div class="r"><div class="i"><svg class="ic"><use href="#i-award"/></svg></div><div>
+        <b>Vous justifiez votre commission</b>
+        <span>L'écart entre le lancement et le top marché, c'est exactement ce que votre gestion apporte.</span></div></div>
     </div>
   </div>
 
-  <div class="pagefoot"><span>werentmax.com</span><span>4 / 4</span></div>
-</section>
-
-<!-- ═══════ FORMULAIRE DE CONTACT — écran uniquement, jamais imprimé ═══════ -->
-<section class="contactzone">
-  <div class="cz-inner">
-    <div class="section-label">Parlons de votre activité</div>
-    <div class="cz-title">Une question ? Écrivez-nous.</div>
-    <p class="cz-sub">
-      Nous répondons sous 24&nbsp;heures ouvrées. Et si vous préférez essayer directement,
-      <a href="https://app.werentmax.com/signup">vos trois premières estimations sont offertes</a>.
-    </p>
-
-    <!-- ⚠️ REMPLACER 5d145928-1d08-4e00-8146-68be7a2fa379 par la clé reçue par email de Web3Forms -->
-    <form action="https://api.web3forms.com/submit" method="POST" class="cz-form">
-      <input type="hidden" name="access_key" value="COLLE_TA_CLE_ICI">
-      <input type="hidden" name="subject" value="Contact depuis la plaquette WeRenTMax">
-      <input type="hidden" name="from_name" value="Site WeRenTMax">
-      <div class="cz-row">
-        <label>
-          <span>Nom</span>
-          <input type="text" name="nom" required>
-        </label>
-        <label>
-          <span>Société</span>
-          <input type="text" name="societe">
-        </label>
-      </div>
-      <div class="cz-row">
-        <label>
-          <span>Email</span>
-          <input type="email" name="email" required>
-        </label>
-        <label>
-          <span>Téléphone</span>
-          <input type="tel" name="telephone">
-        </label>
-      </div>
-      <label class="cz-full">
-        <span>Votre message</span>
-        <textarea name="message" rows="4" required></textarea>
-      </label>
-      <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
-      <button type="submit">Envoyer le message</button>
-      <p class="cz-legal">
-        Les informations transmises servent uniquement à répondre à votre demande.
-        Voir la <a href="/confidentialite.html">politique de confidentialité</a>.
-      </p>
-    </form>
-
-    <div class="cz-alt">
-      Ou directement par email&nbsp;: <a href="mailto:contact@werentmax.com">contact@werentmax.com</a>
+  <div class="est">
+    <div>
+      <div class="n">ESTIMATEUR 02</div>
+      <h3>Moyenne &amp; longue durée</h3>
+      <p class="d">« Mon bien est classé F, je peux encore le louer&nbsp;? » Une fourchette de loyer par
+        type de bail, les mois réellement occupés, et le cadre applicable à chacun.</p>
+      <div class="tg"><span>Colocation</span><span>Étudiant</span><span>Mobilité</span><span>Meublé</span><span>Nu</span></div>
+    </div>
+    <div class="bn">
+      <div class="r"><div class="i"><svg class="ic"><use href="#i-target"/></svg></div><div>
+        <b>Vous captez un marché que vous laissiez passer</b>
+        <span>Tous les propriétaires ne veulent pas du saisonnier. Vous avez enfin une réponse chiffrée pour eux aussi.</span></div></div>
+      <div class="r"><div class="i"><svg class="ic"><use href="#i-home"/></svg></div><div>
+        <b>La colocation calculée chambre par chambre</b>
+        <span>Le propriétaire voit d'où vient chaque euro. C'est ce détail qui rend l'estimation crédible.</span></div></div>
+      <div class="r"><div class="i"><svg class="ic"><use href="#i-scale"/></svg></div><div>
+        <b>Le cadre légal vérifié pour vous</b>
+        <span>Encadrement des loyers, diagnostic énergétique, durée des baux : vérifiés à la génération.</span></div></div>
     </div>
   </div>
-</section>
+
+  <div class="est hl">
+    <div>
+      <span class="rb">UNIQUE SUR LE MARCHÉ</span>
+      <div class="n">ESTIMATEUR 03</div>
+      <h3>Gestion mixte</h3>
+      <p class="d">Un bail étudiant de neuf mois n'est pas reconductible : le logement se libère
+        précisément quand la demande touristique atteint son maximum. Le bien enchaîne deux marchés
+        successifs sur la même année.</p>
+      <div class="tg"><span>Baux individuels 9 mois</span><span>3 mois de haute saison</span></div>
+    </div>
+    <div class="bn">
+      <div class="r"><div class="i"><svg class="ic"><use href="#i-bulb"/></svg></div><div>
+        <b>Un argument que personne d'autre n'a</b>
+        <span>Aucun outil européen ne chiffre ce montage. Vous formulez une proposition que vos concurrents ne peuvent pas faire.</span></div></div>
+      <div class="r"><div class="i"><svg class="ic"><use href="#i-lock"/></svg></div><div>
+        <b>Neuf mois de loyer sécurisé</b>
+        <span>L'argument face au propriétaire frileux du saisonnier : il garde un revenu contractualisé la majeure partie de l'année.</span></div></div>
+      <div class="r"><div class="i"><svg class="ic"><use href="#i-key"/></svg></div><div>
+        <b>Un mandat plus complet, mieux valorisé</b>
+        <span>Deux modes d'exploitation à gérer, c'est une prestation plus large — et un taux de gestion qui se défend.</span></div></div>
+    </div>
+  </div>
+
+  <div class="est">
+    <div>
+      <div class="n">ESTIMATEUR 04</div>
+      <h3>Comparateur de stratégies</h3>
+      <p class="d">« Qu'est-ce qui rapporte le plus, concrètement&nbsp;? » Toutes les stratégies côte
+        à côte, classées par revenu, avec la charge de gestion et le risque de vacance en regard.</p>
+      <div class="tg"><span>7 stratégies</span><span>Classement automatique</span></div>
+    </div>
+    <div class="bn">
+      <div class="r"><div class="i"><svg class="ic"><use href="#i-bolt"/></svg></div><div>
+        <b>La conversation qui fait signer</b>
+        <span>Sur le T4 de la page précédente, l'écart entre la meilleure et la moins bonne stratégie dépasse 10 000 € par an.</span></div></div>
+      <div class="r"><div class="i"><svg class="ic"><use href="#i-compass"/></svg></div><div>
+        <b>Vous conseillez, vous ne vendez pas</b>
+        <span>Le classement sort d'un calcul, pas d'un avis. Si la location nue gagne, le document le dit.</span></div></div>
+      <div class="r"><div class="i"><svg class="ic"><use href="#i-trophy"/></svg></div><div>
+        <b>Vous sortez du lot en trois secondes</b>
+        <span>Le propriétaire consulte trois agences. Deux lui donnent un chiffre. Vous lui donnez une décision.</span></div></div>
+    </div>
+  </div>
+
+  <div class="pf"><span>werentmax.com</span><span>2 / 4</span></div>
+</div>
+
+<!-- ═══════════ PAGE 3 ═══════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="lg">WeRenT<span>Max</span></div>
+    <div class="sec">Ce que vous renseignez · Ce que vous ajustez</div>
+  </div>
+
+  <span class="eyebrow">Une estimation qui colle au bien</span>
+  <h2 class="t">Pas une <em>moyenne de quartier.</em></h2>
+  <p class="lead">Deux appartements dans la même rue ne se louent pas au même prix. Le formulaire
+    capte ce qui fait réellement la différence — <b>et chaque critère pèse dans le calcul</b>.</p>
+
+  <div class="cols">
+    <div>
+      <div class="blk">
+        <h4>Ce que vous renseignez</h4>
+        <ul>
+          <li><svg class="ic"><use href="#i-check"/></svg><span><b>Adresse validée</b> par auto-complétion — sans elle, l'estimation est refusée</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span><b>Surface, pièces, chambres</b> et surface de chaque chambre en colocation</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span><b>Diagnostic énergétique</b> — il conditionne les baux possibles</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span><b>Extérieur, stationnement, vue, exposition</b>, salles de bain, équipements</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span><b>Distances à pied</b> : campus, tram, gare, CHU, commerces</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span><b>Cadre d'exploitation</b> : copropriété, encadrement des loyers, enregistrement</span></li>
+        </ul>
+      </div>
+
+      <div class="blk">
+        <h4>Une jauge de précision</h4>
+        <p style="font-size:10.5px;color:var(--muted);line-height:1.55">
+          Plus le bien est renseigné, plus la fourchette se resserre — de ±13 % à ±6 %.
+          Ce n'est pas décoratif : le niveau de détail est affiché sur le rapport remis
+          au propriétaire, et il pilote réellement la précision annoncée.
+        </p>
+      </div>
+
+      <div class="note">
+        <b>Le diagnostic énergétique change tout.</b> Un logement classé au plus bas de l'échelle
+        ne peut plus être proposé en résidence principale : colocation, étudiant, mobilité et
+        meublé classique tombent. Mais la courte durée et une partie du montage mixte restent
+        ouvertes. Vous êtes alors le seul à pouvoir dire au propriétaire ce qu'il peut encore
+        faire de son bien.
+      </div>
+    </div>
+
+    <div>
+      <div class="blk">
+        <h4>Ce que vous ajustez</h4>
+        <ul>
+          <li><svg class="ic"><use href="#i-pencil"/></svg><span><b>Chaque loyer</b>, au curseur ou à la saisie, bas et haut de fourchette compris</span></li>
+          <li><svg class="ic"><use href="#i-pencil"/></svg><span><b>Prix par nuit et occupation</b>, mois par mois sur la partie saisonnière</span></li>
+          <li><svg class="ic"><use href="#i-pencil"/></svg><span><b>La saison de chaque mois</b>, d'un clic — le graphique et le tableau suivent</span></li>
+          <li><svg class="ic"><use href="#i-pencil"/></svg><span><b>Le calendrier du mixte</b> : basculez un mois du bail vers la saison</span></li>
+          <li><svg class="ic"><use href="#i-pencil"/></svg><span><b>Les mois occupés</b> de chaque type de bail</span></li>
+        </ul>
+      </div>
+
+      <div class="blk">
+        <h4>Ce que le simulateur va chercher</h4>
+        <p style="font-size:10.5px;color:var(--muted);line-height:1.55">
+          Loyers au mètre carré meublé et nu, tension locative, population étudiante, vacance
+          moyenne, prix par nuit, taux d'occupation et saisonnalité. Les résultats sont bornés
+          par des garde-fous, pour qu'aucune estimation ne sorte une valeur invraisemblable.
+          Chaque rapport porte ses sources et sa date de vérification.
+        </p>
+      </div>
+
+      <div class="blk">
+        <h4>Marque blanche</h4>
+        <ul>
+          <li><svg class="ic"><use href="#i-palette"/></svg><span><b>Logo</b> et <b>deux couleurs</b> de votre charte</span></li>
+          <li><svg class="ic"><use href="#i-users"/></svg><span><b>Signature du conseiller</b> qui suit le dossier</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span><b>Aucune mention WeRenTMax</b> visible par votre client</span></li>
+        </ul>
+      </div>
+
+      <div class="blk">
+        <h4>Vos estimations restent vivantes</h4>
+        <ul>
+          <li><svg class="ic"><use href="#i-clock"/></svg><span>Rouvertes en un clic, <b>sans reconsommer de crédit</b></span></li>
+          <li><svg class="ic"><use href="#i-search"/></svg><span><b>Notes internes</b> jamais imprimées sur le rapport remis</span></li>
+          <li><svg class="ic"><use href="#i-globe"/></svg><span><b>Statut prospect ou client</b> et taux de conversion par conseiller</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="pf"><span>werentmax.com</span><span>3 / 4</span></div>
+</div>
+
+<!-- ═══════════ PAGE 4 ═══════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="lg">WeRenT<span>Max</span></div>
+    <div class="sec">Formules &amp; tarifs</div>
+  </div>
+
+  <span class="eyebrow">Tarifs</span>
+  <h2 class="t">Un quota d'estimations <em>chaque mois.</em></h2>
+  <p class="lead">Sans engagement, résiliable en un clic. Au-delà du quota, les estimations
+    supplémentaires sont facturées à l'unité — <b>toujours avec votre accord préalable</b>.</p>
+
+  <table class="tarifs">
+    <thead><tr><th>Formule</th><th style="text-align:right">Prix</th><th style="text-align:right">Inclus</th><th style="text-align:right">Au-delà du quota</th></tr></thead>
+    <tbody>
+      <tr><td>Découverte</td><td class="pr">Gratuit</td><td>3 estimations</td><td>Pour essayer sans engagement</td></tr>
+      <tr><td>À l'unité</td><td class="pr">24,90 €</td><td>1 estimation</td><td>Sans abonnement, valable 12 mois</td></tr>
+      <tr><td>Solo</td><td class="pr">39,90 € <span style="font-size:9px;color:#94A3B8">/mois</span></td><td>10 par mois</td><td>5,90 € l'estimation supplémentaire</td></tr>
+      <tr class="pop"><td>Pro</td><td class="pr">79,90 € <span style="font-size:9px">/mois</span></td><td>25 par mois</td><td>4,90 € l'estimation supplémentaire</td></tr>
+      <tr><td>Business</td><td class="pr">169,90 € <span style="font-size:9px;color:#94A3B8">/mois</span></td><td>70 par mois</td><td>3,90 € l'estimation supplémentaire</td></tr>
+      <tr><td>Réseau</td><td class="pr">Sur devis</td><td>Volume négocié</td><td>Franchises et multi-agences</td></tr>
+    </tbody>
+  </table>
+
+  <div class="note" style="margin-bottom:14px">
+    <b>Conseiller supplémentaire : 9,90 € par mois.</b> Il partage le quota de l'agence et signe
+    ses propres rapports. Les sièges s'ajustent automatiquement au prorata.
+  </div>
+
+  <div class="cols" style="gap:14px;margin-bottom:6px">
+    <div class="note">
+      <b>Le marché facture 40 € l'estimation.</b> La formule Solo vous en donne dix par mois pour
+      39,90 €, soit <b>3,99 € l'unité</b>. Vous êtes rentable dès la deuxième.
+    </div>
+    <div class="note">
+      <b>Un seul mandat signé dans l'année</b> couvre l'abonnement plusieurs dizaines de fois.
+      La vraie question n'est pas de savoir si l'outil est rentable, mais combien de rendez-vous
+      vous perdez faute d'arriver avec un document.
+    </div>
+  </div>
+
+  <div class="cta">
+    <h3>Vos trois premières estimations<br>sont <em>offertes.</em></h3>
+    <p>Sans carte bancaire. Les quatre estimateurs, l'export à votre marque, tout est inclus.</p>
+    <a class="u" href="https://app.werentmax.com/signup">Créer mon compte sur werentmax.com</a>
+  </div>
+
+  <p class="mentions">
+    contact@werentmax.com · Formulaire de contact sur werentmax.com<br>
+    WeRenTMax est édité par Holihost LLC — Albuquerque, Nouveau-Mexique, États-Unis.
+    Les montants figurant dans ce document sont donnés à titre d'exemple et ne constituent pas
+    une garantie de revenus. Ils proviennent d'un rapport réel généré sur un appartement T4 de
+    82 m² à Montpellier. Prix TTC en euros. Conditions générales sur werentmax.com/cgv.html
+  </p>
+
+  <div class="pf"><span>werentmax.com</span><span>4 / 4</span></div>
+</div>
 
 </body>
 </html>
