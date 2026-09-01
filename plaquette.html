@@ -134,13 +134,21 @@ tr.win .bar i{background:var(--blue)}
      feuille presque vide, et les pieds de page se retrouvaient au milieu.
      La mise a l'echelle est compensee : 317 x 0,86 = 273 mm, soit la
      hauteur utile d'une A4 avec 12 mm de marge. */
-  .page{box-shadow:none;margin:0;width:auto;padding:0;
-        height:317mm;min-height:0;zoom:.86;
+  /* Les marges appartiennent au DOCUMENT, pas au navigateur.
+     Confiees a la regle @page, elles etaient annulees des que l'utilisateur
+     choisissait "Marges : aucune" dans la fenetre d'impression, et le texte
+     se retrouvait a fleur de papier. En les placant a l'interieur de chaque
+     feuille, le rendu devient identique quel que soit le reglage du poste.
+     La regle @page est donc mise a zero : "Aucune" et "Par defaut" donnent
+     desormais le meme resultat.
+     Hauteur : 358 x 0,83 = 297 mm, soit la feuille A4 entiere. */
+  .page{box-shadow:none;margin:0;width:auto;
+        height:358mm;min-height:0;padding:16mm;zoom:.83;
         display:flex;flex-direction:column;overflow:hidden;
         page-break-after:always;break-after:page}
   .page:last-child{page-break-after:auto;break-after:auto}
   .pf{margin-top:auto}
-  @page{size:A4 portrait;margin:12mm}
+  @page{size:A4 portrait;margin:0}
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
   tr,td,th{page-break-inside:avoid!important}
   .est,.cmp,.hit,.cta{page-break-inside:avoid!important}
