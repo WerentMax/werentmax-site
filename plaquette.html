@@ -32,9 +32,9 @@ svg.ic{width:18px;height:18px;stroke:var(--blue);fill:none;stroke-width:1.7;stro
   display:flex;justify-content:space-between;font-size:9.5px;color:#94A3B8;letter-spacing:.4px}
 
 .eyebrow{display:inline-block;font-size:9.5px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
-h2.t{font-size:30px;color:var(--ink);margin-bottom:12px}
+h2.t{font-size:27px;color:var(--ink);margin-bottom:10px}
 h2.t em{font-style:italic;color:var(--blue)}
-p.lead{font-size:13px;color:var(--muted);margin-bottom:18px}
+p.lead{font-size:12px;color:var(--muted);margin-bottom:14px}
 p.lead b{color:var(--ink)}
 
 /* ---------- MODES ---------- */
@@ -75,21 +75,21 @@ tr.win .bar i{background:var(--blue)}
 .hit p b{color:#fff}
 
 /* ---------- ESTIMATEURS ---------- */
-.est{border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:11px;
-  display:grid;grid-template-columns:1fr 1.15fr;gap:20px}
+.est{border:1px solid var(--line);border-radius:11px;padding:11px 14px;margin-bottom:8px;
+  display:grid;grid-template-columns:1fr 1.15fr;gap:16px}
 .est.hl{border-color:var(--blue);background:var(--blue-soft)}
 .est .n{font-size:8.5px;font-weight:800;letter-spacing:1.6px;color:var(--blue);margin-bottom:5px}
-.est h3{font-size:17px;color:var(--navy);margin-bottom:6px}
-.est .d{font-size:11px;color:var(--muted);line-height:1.55;margin-bottom:9px}
+.est h3{font-size:15.5px;color:var(--navy);margin-bottom:4px}
+.est .d{font-size:10px;color:var(--muted);line-height:1.5;margin-bottom:7px}
 .est .tg{display:flex;flex-wrap:wrap;gap:4px}
 .est .tg span{font-size:8.5px;background:#fff;border:1px solid var(--line);color:var(--navy);border-radius:20px;padding:2px 8px;font-weight:600}
-.bn{display:flex;flex-direction:column;gap:9px}
+.bn{display:flex;flex-direction:column;gap:6px}
 .bn .r{display:flex;gap:9px;align-items:flex-start}
-.bn .i{width:26px;height:26px;border-radius:8px;background:#fff;border:1px solid var(--line);
+.bn .i{width:22px;height:22px;border-radius:7px;background:#fff;border:1px solid var(--line);
   display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .bn .i svg{width:14px;height:14px}
-.bn b{display:block;font-size:10.5px;color:var(--ink);font-weight:700;margin-bottom:1px}
-.bn span{font-size:10px;color:var(--muted);line-height:1.5}
+.bn b{display:block;font-size:10px;color:var(--ink);font-weight:700;margin-bottom:1px}
+.bn span{font-size:9.5px;color:var(--muted);line-height:1.45}
 .rb{display:inline-block;background:var(--blue);color:#fff;font-size:8px;font-weight:800;
   letter-spacing:1.2px;padding:2px 9px;border-radius:20px;margin-bottom:7px}
 
@@ -129,9 +129,18 @@ tr.win .bar i{background:var(--blue)}
 @media print{
   body{background:#fff}
   .noprint{display:none}
-  .page{box-shadow:none;margin:0;width:auto;min-height:0;padding:0;page-break-after:always}
-  .page:last-child{page-break-after:auto}
-  @page{size:A4 portrait;margin:14mm}
+  /* Chaque bloc .page occupe EXACTEMENT une feuille. Sans hauteur fixe le
+     contenu s'ecoulait librement : la page 2 debordait sur une cinquieme
+     feuille presque vide, et les pieds de page se retrouvaient au milieu.
+     La mise a l'echelle est compensee : 317 x 0,86 = 273 mm, soit la
+     hauteur utile d'une A4 avec 12 mm de marge. */
+  .page{box-shadow:none;margin:0;width:auto;padding:0;
+        height:317mm;min-height:0;zoom:.86;
+        display:flex;flex-direction:column;overflow:hidden;
+        page-break-after:always;break-after:page}
+  .page:last-child{page-break-after:auto;break-after:auto}
+  .pf{margin-top:auto}
+  @page{size:A4 portrait;margin:12mm}
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
   tr,td,th{page-break-inside:avoid!important}
   .est,.cmp,.hit,.cta{page-break-inside:avoid!important}
@@ -428,6 +437,32 @@ tr.win .bar i{background:var(--blue)}
         </ul>
       </div>
     </div>
+  </div>
+
+  <div class="blk" style="margin-top:14px">
+    <h4>Les rapports livrés</h4>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:8px">
+      <div style="border:1px solid var(--line);border-radius:9px;padding:10px 12px">
+        <div style="font-size:10px;font-weight:800;letter-spacing:1.2px;color:var(--blue);margin-bottom:4px">COURTE DURÉE</div>
+        <div style="font-size:9.5px;color:var(--muted);line-height:1.5">Deux pages. Indicateurs et marché, trois scénarios, stratégie de lancement, saisonnalité, graphique et détail mensuel.</div>
+      </div>
+      <div style="border:1px solid var(--line);border-radius:9px;padding:10px 12px">
+        <div style="font-size:10px;font-weight:800;letter-spacing:1.2px;color:var(--blue);margin-bottom:4px">MOYENNE DURÉE</div>
+        <div style="font-size:9.5px;color:var(--muted);line-height:1.5">Une page. Marché locatif, puis une fourchette de loyer par type de bail avec ses mois occupés et son revenu annuel.</div>
+      </div>
+      <div style="border:1px solid var(--line);border-radius:9px;padding:10px 12px">
+        <div style="font-size:10px;font-weight:800;letter-spacing:1.2px;color:var(--blue);margin-bottom:4px">GESTION MIXTE</div>
+        <div style="font-size:9.5px;color:var(--muted);line-height:1.5">Deux pages. Calendrier annuel, trois scénarios, détail mois par mois et conditions de mise en œuvre du montage.</div>
+      </div>
+      <div style="border:1px solid var(--line);border-radius:9px;padding:10px 12px">
+        <div style="font-size:10px;font-weight:800;letter-spacing:1.2px;color:var(--blue);margin-bottom:4px">COMPARATEUR</div>
+        <div style="font-size:9.5px;color:var(--muted);line-height:1.5">Une page. Les sept stratégies classées par revenu, avec charge de gestion, risque de vacance et régime fiscal.</div>
+      </div>
+    </div>
+    <p style="font-size:10px;color:var(--muted);line-height:1.55;margin-top:9px">
+      Export en un clic, prêt à envoyer ou à imprimer. Chaque rapport porte le nom du client,
+      l'adresse du bien, la signature du conseiller et la date de vérification des données.
+    </p>
   </div>
 
   <div class="pf"><span>werentmax.com</span><span>3 / 4</span></div>
